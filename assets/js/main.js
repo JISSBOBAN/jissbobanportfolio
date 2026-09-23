@@ -141,4 +141,99 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open('https://www.linkedin.com/in/jissboban07', '_blank');
     });
   }
+
+  // 8. Cybersecurity Clearance Gateway (Human Verification / CAPTCHA)
+  const gateway = document.getElementById('security-gateway');
+  const verifyBtn = document.getElementById('captcha-verify-btn');
+  const statusText = document.getElementById('captcha-status-text');
+  const terminal = document.getElementById('gateway-terminal');
+  const bypassBtn = document.getElementById('gateway-bypass-btn');
+  const lockTerminalBtn = document.getElementById('btn-lock-terminal');
+
+  function addTerminalLine(text, delay = 0) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (!terminal) return resolve();
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        line.innerHTML = `<span class="term-prefix">&gt;</span> <span class="term-text">${text}</span>`;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+        resolve();
+      }, delay);
+    });
+  }
+
+  function unlockPortfolio() {
+    if (!gateway) return;
+    sessionStorage.setItem('jb_cyber_clearance', 'verified');
+    gateway.classList.add('verified');
+    document.body.classList.remove('gateway-active');
+    setTimeout(() => {
+      gateway.style.display = 'none';
+    }, 700);
+  }
+
+  function lockPortfolio() {
+    if (!gateway) return;
+    sessionStorage.removeItem('jb_cyber_clearance');
+    gateway.style.display = 'flex';
+    gateway.classList.remove('verified');
+    document.body.classList.add('gateway-active');
+    if (verifyBtn) {
+      verifyBtn.classList.remove('scanning', 'passed');
+    }
+    if (statusText) {
+      statusText.textContent = 'Verify Human Security Analyst';
+    }
+    if (terminal) {
+      terminal.innerHTML = `<div class="terminal-line"><span class="term-prefix">&gt;</span> <span class="term-text">STATUS: Awaiting analyst identity challenge response...</span></div>`;
+    }
+  }
+
+  // Check initial verification status
+  const isVerified = sessionStorage.getItem('jb_cyber_clearance') === 'verified';
+  if (!isVerified && gateway) {
+    document.body.classList.add('gateway-active');
+    gateway.style.display = 'flex';
+  } else if (gateway) {
+    gateway.style.display = 'none';
+  }
+
+  if (verifyBtn) {
+    verifyBtn.addEventListener('click', async () => {
+      if (verifyBtn.classList.contains('scanning') || verifyBtn.classList.contains('passed')) return;
+
+      verifyBtn.classList.add('scanning');
+      if (statusText) statusText.textContent = 'Authenticating TLS & Biometrics...';
+
+      await addTerminalLine('Initializing client cryptographic handshake...', 180);
+      await addTerminalLine('Validating TLS 1.3 fingerprint & anti-bot posture... [OK]', 300);
+      await addTerminalLine('SHA-256 Checksum: 0x9816FC7E055DD8... [MATCHED]', 350);
+      await addTerminalLine('Identity Verified: Human Security Analyst.', 250);
+      await addTerminalLine('Clearance Level 3 Approved. Decrypting portfolio...', 200);
+
+      verifyBtn.classList.remove('scanning');
+      verifyBtn.classList.add('passed');
+      if (statusText) statusText.textContent = 'Verified [Access Granted]';
+
+      setTimeout(() => {
+        unlockPortfolio();
+      }, 500);
+    });
+  }
+
+  if (bypassBtn) {
+    bypassBtn.addEventListener('click', () => {
+      unlockPortfolio();
+    });
+  }
+
+  if (lockTerminalBtn) {
+    lockTerminalBtn.addEventListener('click', () => {
+      lockPortfolio();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
+

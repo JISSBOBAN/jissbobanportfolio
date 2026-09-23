@@ -24,9 +24,85 @@
 </head>
 <body>
 
+  <!-- ==========================================================================
+       CYBERSECURITY DYNAMIC BACKGROUND CANVAS & PERSPECTIVE GRID
+       ========================================================================== -->
+  <canvas id="cyber-canvas"></canvas>
+  <div class="cyber-grid-overlay"></div>
+
   <!-- Ambient Glowing Orbs -->
   <div class="ambient-glow-orb-1"></div>
   <div class="ambient-glow-orb-2"></div>
+
+  <!-- Cyber HUD Telemetry Badges -->
+  <div class="cyber-hud-top-left">
+    <span class="hud-mono"><span class="hud-dot"></span>[DEFENSE MATRIX: ONLINE]</span>
+    <span class="hud-mono">[SIEM INGESTION: 14.8 GB/s]</span>
+  </div>
+  <div class="cyber-hud-bottom-right">
+    <span class="hud-mono">[ZERO-TRUST: ENFORCED]</span>
+    <span class="hud-mono">[ENCRYPTION: AES-256-GCM]</span>
+  </div>
+
+  <!-- ==========================================================================
+       CYBERSECURITY CLEARANCE GATEWAY (HUMAN VERIFICATION / CAPTCHA CHECKPOINT)
+       ========================================================================== -->
+  <div class="security-gateway-overlay" id="security-gateway">
+    <div class="security-gateway-modal">
+      <!-- Top Cyber Status Bar -->
+      <div class="gateway-top-bar">
+        <div class="gateway-indicator">
+          <span class="gateway-dot"></span>
+          <span class="gateway-label">ZERO-TRUST PERIMETER ENFORCED</span>
+        </div>
+        <div class="gateway-code">PARAMOUNT//SEC-GATEWAY.V9</div>
+      </div>
+
+      <!-- Shield Icon & Clearance Title -->
+      <div class="gateway-header">
+        <div class="gateway-shield-wrap">
+          <svg class="gateway-shield-icon" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4" class="shield-check-path" />
+          </svg>
+          <div class="gateway-radar-ring"></div>
+        </div>
+        <h2 class="gateway-title">Security Clearance Gateway</h2>
+        <p class="gateway-sub">Paramount Defense Perimeter · Level 3 Portfolio Decryption</p>
+      </div>
+
+      <!-- Interactive Human Verification / CAPTCHA Box -->
+      <div class="gateway-captcha-box" id="gateway-captcha-box">
+        <div class="captcha-checkbox-wrap">
+          <button class="captcha-checkbox-btn" id="captcha-verify-btn" aria-label="Verify Human Security Analyst">
+            <span class="checkbox-spinner"></span>
+            <svg class="checkbox-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="captcha-text-wrap">
+            <span class="captcha-prompt-text" id="captcha-status-text">Verify Human Security Analyst</span>
+            <span class="captcha-subtext">Cryptographic Challenge &amp; Biometric Integrity Check</span>
+          </div>
+        </div>
+        <div class="captcha-brand">
+          <div class="captcha-brand-logo">🛡️ Sentinel</div>
+          <span class="captcha-brand-tag">ZeroTrust</span>
+        </div>
+      </div>
+
+      <!-- Live Terminal Decryption Logs -->
+      <div class="gateway-terminal" id="gateway-terminal">
+        <div class="terminal-line"><span class="term-prefix">&gt;</span> <span class="term-text">STATUS: Awaiting analyst identity challenge response...</span></div>
+      </div>
+
+      <!-- Bottom Bypass & Security Metadata -->
+      <div class="gateway-footer">
+        <button class="gateway-bypass-btn" id="gateway-bypass-btn">Instant Recruiter Bypass →</button>
+        <div class="gateway-meta-info">TLS 1.3 • SHA-256 HMAC Authenticated</div>
+      </div>
+    </div>
+  </div>
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -931,9 +1007,15 @@
       <p style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 6px;">
         Associate Security Engineer · Microsoft Transformation Engineer · +91 8921637620 · jissboban@gmail.com
       </p>
+      <div style="margin-top: 14px;">
+        <button class="btn-lock-terminal" id="btn-lock-terminal" title="Lock Terminal and Test Security Clearance Gateway">
+          🔒 Lock Terminal (Re-test Gateway)
+        </button>
+      </div>
     </div>
   </footer>
 
+  <script src="assets/js/network-canvas.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
