@@ -1,44 +1,95 @@
-# Er. Jiss Boban — Associate Security Engineer & Microsoft Transformation Engineer
+# Er. Jiss Boban — Technical Dossier & Engineering Portfolio
 
-> Personal Portfolio & Engineering Showcase | [LinkedIn Profile](https://www.linkedin.com/in/jissboban07)
+> Minimalist Editorial / Swiss International Typographic Style  
+> Strict Monochrome (Pure Black & Pure White) • High-Density Enterprise Dossier  
+> [LinkedIn Profile](https://www.linkedin.com/in/jissboban07) • [Email Contact](mailto:jissboban@gmail.com)
 
-Welcome to the official portfolio repository for **Er. Jiss Boban**.
+Welcome to the redesigned portfolio repository for **Er. Jiss Boban**, Associate Security Engineer at **Paramount Computer Systems** and Microsoft Transformation Engineer.
 
-## 📞 Contact Information
-- **Phone**: [+91 8921637620](tel:+918921637620)
-- **Email**: [jissboban@gmail.com](mailto:jissboban@gmail.com)
-- **LinkedIn**: [linkedin.com/in/jissboban07](https://www.linkedin.com/in/jissboban07)
-- **Location**: Coimbatore, Tamil Nadu & Ernakulam, Kerala, India
+---
 
-## 🌟 Professional Role & Global Impact
-- **Current Role**: Associate Security Engineer at **Paramount Computer Systems**
-- **Client Sectors**: Dubai & Kuwait Government Entities, Commercial Airlines & Aviation, Telecommunications (UAE & India), Healthcare & Hospital Networks, and Higher Education
-- **Specialization**:
-  - Full-stack **Microsoft Sentinel SIEM Architecture**: Interactive Workbooks, API-based Ingestion (DCE / Logs Ingestion API), Logstash Grok Pipelines, Azure Monitor Agent (AMA), Data Collection Rules (DCR), and ASIM Normalization
-  - **Azure Logic Apps (SOAR) Automation**: Real-time automated containment playbooks
-  - **Microsoft Security Copilot & Agentic AI**: Promptbooks and Model Context Protocol (MCP) integration
-  - **Cloud Security**: Microsoft Defender XDR, Microsoft Entra ID (Azure AD), AWS CloudTrail
+## 🏛️ Design Paradigm: "Signal Over Noise"
 
-## 🏆 Honors & Awards
-- **PT Thomas MLA Excellence Award**: Honored by MLA Uma Thomas for academic achievements in Computer Science & Engineering and Electronics & Communication Engineering.
-- **KTU State Project Selection — ENTE KERALAM**: "Golden Eye – The Rescue Drone" officially selected by KTU for showcase at the Kerala 4th Anniversary State Government Expo.
-- **AISAT Principal’s Club Member**: Continuous academic excellence (CGPA: **8.65**).
+Following the specifications outlined in [`DESIGN.md`](./DESIGN.md), this website has been redesigned from the ground up:
+- **Strict Monochrome Color System**: Pure blacks (`#000000`), crisp whites (`#ffffff`), and calibrated neutral grays. Zero decorative color gradients or synthetic glows.
+- **Editorial Typography**: Powered by `Google Sans Flex` (primary sans) and `JetBrains Mono` (technical / monospace metrics).
+- **Zero Distractions**: All artificial waiting gates, simulated CAPTCHA challenges, canvas particles, and 3D flip cards have been removed in favor of authoritative, high-density case studies and tabular credential indexes.
+- **Responsive 960px Grid**: Clean hairline dividers (`1px solid var(--border-subtle)`), 8-point typographic rhythm, and print-ready PDF resume generation.
 
-## 🛡️ Verified Certifications
-- **Frontier Transformation Engineer** — Microsoft AI Frontiers (Research Lab)
-- **Electronic Systems for Cancer Diagnosis (ELITE Tag)** — IISc Bangalore / NPTEL (SWAYAM, Govt of India)
-- **Fabrication Techniques for MEMs-Based Sensors** — NPTEL (SWAYAM, Govt of India)
-- **Microsoft Certified: Security Operations Analyst Associate (SC-200)**
-- **Microsoft Certified: Agentic AI Business Solutions Architect** (Microsoft Copilot Studio)
-- **Microsoft Certified: Azure AI Apps and Agents Developer Associate**
-- **GitHub Copilot** (GH 300)
-- **Anthropic Certified**: Model Context Protocol (MCP), Claude API, and Agent Skills
-- **Microsoft Certified: Azure Fundamentals (AZ-900)**
-- **Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)**
+---
 
-## 🚁 Featured Projects
-1. **Golden Eye – The Rescue Drone**: YOLOv8 AI Human Detection & Face Recognition, ESP32-CAM real-time vision, load-lifting for disaster supplies (Selected by KTU for Ente Keralam 2025).
-2. **Sentinel Interactive Workbooks & Executive Dashboards**: Custom multi-cloud threat maps, KQL metrics, and SOC KPIs.
-3. **API-Based Ingestion & Logstash Pipelines**: Logs Ingestion API, DCE, and Logstash grok parsing.
-4. **Microsoft Security Copilot & Agentic AI**: Contextual incident triage using Copilot Studio and MCP.
-5. **Azure Logic Apps (SOAR) Automated Playbooks**: Automated malicious IP blocking and credential revocation.
+## 📂 Architecture & Directory Structure
+
+This repository provides both an **instant zero-build single-page web app** (ready for GitHub Pages and local viewing) and a **fully scaffolded Vite + React + TypeScript** modular migration:
+
+```text
+jiss_portfolio/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml            # GitHub Pages deployment workflow
+├── assets/
+│   ├── css/
+│   │   └── style.css             # Monochrome design system & tokens
+│   ├── js/
+│   │   └── main.js               # Theme switching, modal, & telemetry
+│   └── images/                   # Technical diagrams & monochrome portraits
+│       ├── ai-portrait-primary.png
+│       ├── drone.jpg
+│       ├── project-workbook.jpg
+│       ├── project-logstash.jpg
+│       ├── project-copilot.jpg
+│       ├── project-soar.jpg
+│       └── project-ccf-rules.jpg
+├── src/                          # Strongly-typed Vite + React + TypeScript source
+│   ├── types/                    # Interfaces (project, credential, experience, profile)
+│   ├── data/                     # Typed data modules
+│   ├── components/               # Layout, sections, and UI components
+│   ├── App.tsx                   # Master orchestration
+│   ├── main.tsx                  # React DOM root
+│   └── index.css                 # Style entrypoint
+├── index.html                    # High-performance editorial single-page dossier
+├── DESIGN.md                     # Full Technical & Visual Specification
+├── package.json                  # Vite + React + TS dependencies
+├── tsconfig.json                 # Strict TypeScript configuration
+├── tsconfig.node.json
+├── vite.config.ts                # Vite config with base path resolution
+└── README.md
+```
+
+---
+
+## 🛠️ Key Sections & Features
+
+1. **Sticky Header**: Minimal brand mark, section navigation links, printable CV modal trigger, and instant `[Light / Dark]` monochrome theme switch.
+2. **Hero Dossier**: Direct engineering summary, role affiliation at Paramount Computer Systems, and direct action coordinates.
+3. **Executive Impact Strip**: Verified enterprise deployment coverage across Dubai & Kuwait Government, Commercial Aviation, Telecommunications, and Enterprise Healthcare.
+4. **Section 01 // About & Principles**: High-resolution monochrome portrait and 4 core engineering principles (Signal Over Noise, Zero-Trust Boundaries, Zero-Touch Containment, Agentic Forensics).
+5. **Section 02 // Chronological Dossier**: Unified career and academic timeline detailing Microsoft Sentinel SIEM workspace architecture, DCR cost optimization (>60%), and AISAT B.Tech degree (8.65 CGPA, Principal's Club).
+6. **Section 03 // Selected Engineering Systems**: 6 in-depth architectural case studies (Rescue Drone, Sentinel Workbooks, Ingestion Pipelines, Security Copilot, Logic Apps SOAR, and Codeless Connector Framework).
+7. **Section 04 // Honors & Recognitions**: PT Thomas MLA Excellence Award, KTU State Selection for ENTE KERALAM Expo, and AISAT Principal's Club Induction.
+8. **Section 05 // Verified Credentials Index**: High-density tabular index of all 11 verified certifications across Microsoft, Anthropic, IISc Bangalore, and NPTEL.
+9. **Section 06 // Capabilities Matrix**: 4-column monospace capabilities index across SIEM, SOAR, Agentic AI, and Core Engineering.
+10. **Section 07 // Direct Communication**: Direct communication channels with one-click clipboard copy.
+11. **Printable CV Modal**: Print and PDF-ready resume viewer optimized with dedicated `@media print` rules.
+
+---
+
+## 🚀 Running Locally
+
+### Option A: Instant Static Preview (No Node.js Required)
+Simply open `index.html` in any modern web browser or serve via Python:
+```bash
+python -m http.server 8000
+```
+Then navigate to `http://localhost:8000`.
+
+### Option B: Vite + React + TypeScript Dev Server (When Node.js is installed)
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## 📜 License & Copyright
+© 2026 Er. Jiss Boban. All rights reserved.

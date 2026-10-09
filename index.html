@@ -3,1019 +3,715 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Er. Jiss Boban | Associate Security Engineer & Microsoft Transformation Engineer</title>
-  
-  <meta name="description" content="Portfolio of Er. Jiss Boban — Associate Security Engineer at Paramount Computer Systems, Microsoft Transformation Engineer, Cloud Security Specialist, and Computer Science Engineer." />
-  <meta name="author" content="Er. Jiss Boban" />
-
-  <!-- Open Graph / LinkedIn Sharing -->
-  <meta property="og:title" content="Er. Jiss Boban | Associate Security Engineer & Microsoft Transformation Engineer" />
-  <meta property="og:description" content="Associate Security Engineer at Paramount Computer Systems specializing in Microsoft Sentinel SIEM, Workbooks, API Ingestion, Logstash, Logic Apps SOAR, Security Copilot, and Cloud Security." />
+  <title>Jiss Boban — Security Engineer &amp; Microsoft Transformation Engineer</title>
+  <meta name="description" content="Jiss Boban — Associate Security Engineer at Paramount Computer Systems. Microsoft Sentinel SIEM, Azure Logic Apps SOAR, Security Copilot, Agentic AI and KQL Detection Engineering." />
+  <meta name="author" content="Jiss Boban" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.linkedin.com/in/jissboban07" />
-  <meta property="og:image" content="assets/images/ai-portrait-primary.png" />
-
-  <!-- Google Fonts: Playfair Display / Prata (Serif) + Plus Jakarta Sans / Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:title" content="Jiss Boban — Security Engineer" />
+  <meta property="og:description" content="Associate Security Engineer architecting Microsoft Sentinel SIEM, SOAR Automation, and Agentic AI for enterprise infrastructure." />
+  <meta property="og:image" content="assets/images/jiss-hero-ms.jpg" />
+  <meta name="theme-color" content="#060b12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- ==========================================================================
-       CYBERSECURITY DYNAMIC BACKGROUND CANVAS & PERSPECTIVE GRID
-       ========================================================================== -->
-  <canvas id="cyber-canvas"></canvas>
-  <div class="cyber-grid-overlay"></div>
+  <!-- ================================================================
+       CUSTOM CURSOR
+       ================================================================ -->
+  <div class="cursor-dot"  id="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Ambient Glowing Orbs -->
-  <div class="ambient-glow-orb-1"></div>
-  <div class="ambient-glow-orb-2"></div>
-
-  <!-- Cyber HUD Telemetry Badges -->
-  <div class="cyber-hud-top-left">
-    <span class="hud-mono"><span class="hud-dot"></span>[DEFENSE MATRIX: ONLINE]</span>
-    <span class="hud-mono">[SIEM INGESTION: 14.8 GB/s]</span>
-  </div>
-  <div class="cyber-hud-bottom-right">
-    <span class="hud-mono">[ZERO-TRUST: ENFORCED]</span>
-    <span class="hud-mono">[ENCRYPTION: AES-256-GCM]</span>
-  </div>
-
-  <!-- ==========================================================================
-       CYBERSECURITY CLEARANCE GATEWAY (HUMAN VERIFICATION / CAPTCHA CHECKPOINT)
-       ========================================================================== -->
-  <div class="security-gateway-overlay" id="security-gateway">
-    <div class="security-gateway-modal">
-      <!-- Top Cyber Status Bar -->
-      <div class="gateway-top-bar">
-        <div class="gateway-indicator">
-          <span class="gateway-dot"></span>
-          <span class="gateway-label">ZERO-TRUST PERIMETER ENFORCED</span>
-        </div>
-        <div class="gateway-code">PARAMOUNT//SEC-GATEWAY.V9</div>
+  <!-- ================================================================
+       LOADER
+       ================================================================ -->
+  <div id="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-logo">
+      <div class="loader-logo-square">
+        <span></span><span></span><span></span><span></span>
       </div>
-
-      <!-- Shield Icon & Clearance Title -->
-      <div class="gateway-header">
-        <div class="gateway-shield-wrap">
-          <svg class="gateway-shield-icon" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M9 12l2 2 4-4" class="shield-check-path" />
-          </svg>
-          <div class="gateway-radar-ring"></div>
-        </div>
-        <h2 class="gateway-title">Security Clearance Gateway</h2>
-        <p class="gateway-sub">Paramount Defense Perimeter · Level 3 Portfolio Decryption</p>
-      </div>
-
-      <!-- Interactive Human Verification / CAPTCHA Box -->
-      <div class="gateway-captcha-box" id="gateway-captcha-box">
-        <div class="captcha-checkbox-wrap">
-          <button class="captcha-checkbox-btn" id="captcha-verify-btn" aria-label="Verify Human Security Analyst">
-            <span class="checkbox-spinner"></span>
-            <svg class="checkbox-check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </button>
-          <div class="captcha-text-wrap">
-            <span class="captcha-prompt-text" id="captcha-status-text">Verify Human Security Analyst</span>
-            <span class="captcha-subtext">Cryptographic Challenge &amp; Biometric Integrity Check</span>
-          </div>
-        </div>
-        <div class="captcha-brand">
-          <div class="captcha-brand-logo">🛡️ Sentinel</div>
-          <span class="captcha-brand-tag">ZeroTrust</span>
-        </div>
-      </div>
-
-      <!-- Live Terminal Decryption Logs -->
-      <div class="gateway-terminal" id="gateway-terminal">
-        <div class="terminal-line"><span class="term-prefix">&gt;</span> <span class="term-text">STATUS: Awaiting analyst identity challenge response...</span></div>
-      </div>
-
-      <!-- Bottom Bypass & Security Metadata -->
-      <div class="gateway-footer">
-        <button class="gateway-bypass-btn" id="gateway-bypass-btn">Instant Recruiter Bypass →</button>
-        <div class="gateway-meta-info">TLS 1.3 • SHA-256 HMAC Authenticated</div>
-      </div>
+      Jiss Boban
     </div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">INITIALIZING SECURITY DOSSIER...</div>
   </div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#home" class="nav-brand">Jiss</a>
+  <!-- ================================================================
+       TOP NAVIGATION (vshslv-style bar)
+       ================================================================ -->
+  <header class="topnav" id="topnav" role="banner">
+    <div class="topnav-name">
+      <div class="ms-logo" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      Jiss Boban
+    </div>
 
-      <div class="nav-right-wrap">
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#awards" class="nav-link">Awards</a></li>
-          <li><a href="#certifications" class="nav-link">Certifications</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+    <nav class="topnav-center" aria-label="Main navigation">
+      <a href="#about"       class="topnav-link active" id="tnav-about">About</a>
+      <a href="#experience"  class="topnav-link"        id="tnav-experience">Experience</a>
+      <a href="#projects"    class="topnav-link"        id="tnav-projects">Portfolio</a>
+      <a href="#credentials" class="topnav-link"        id="tnav-credentials">Credentials</a>
+      <a href="#contact"     class="topnav-link"        id="tnav-contact">Contact</a>
+    </nav>
 
-        <!-- Dark/Light Theme Switch Pill -->
-        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark/light mode">
-          <span class="theme-toggle-dot"></span>
-        </button>
-
-        <button class="nav-toggle-mobile" aria-label="Toggle mobile menu">☰</button>
+    <div class="topnav-right">
+      <div class="topnav-status">
+        <span class="status-dot"></span>
+        <span id="live-clock">IST —:—:—</span>
+      </div>
+      <div class="topnav-status">
+        <span>Coimbatore, India</span>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- ==========================================================================
-       HERO SECTION
-       ========================================================================== -->
-  <section id="home" class="hero-section">
-    <div class="container">
-      <div class="hero-tag">
-        ASSOCIATE SECURITY ENGINEER · MICROSOFT TRANSFORMATION ENGINEER
+  <!-- ================================================================
+       HERO — FULL VIEWPORT CINEMATIC
+       ================================================================ -->
+  <section class="hero" id="hero" aria-label="Hero introduction">
+
+    <!-- Side tab -->
+    <div class="hero-side-tab" aria-hidden="true">Selected Works</div>
+
+    <!-- BG image -->
+    <div class="hero-bg" role="img" aria-label="Jiss Boban — Security Engineer in server room"></div>
+
+    <!-- Atmospheric overlays -->
+    <div class="hero-overlay-base" aria-hidden="true"></div>
+    <div class="hero-scanlines" aria-hidden="true"></div>
+    <div class="hero-noise" aria-hidden="true"></div>
+
+    <!-- Content overlay at bottom -->
+    <div class="hero-content">
+
+      <!-- Col 1: Role -->
+      <div class="hero-role-block hero-col">
+        <div class="hero-role-title">
+          <strong>Jiss Boban</strong>
+          Associate Security Engineer<br>
+          Microsoft Transformation Engineer
+        </div>
       </div>
 
-      <h1 class="hero-title-name font-serif">
-        JISS <span>BOBAN</span>
-      </h1>
-
-      <div class="hero-subheadline font-serif">
-        Microsoft Sentinel, Cloud Defense & Security Copilot
+      <!-- Col 2: Detection -->
+      <div class="hero-col">
+        <div class="hero-col-label">Detection &amp; SIEM</div>
+        <div class="hero-col-items">
+          <span class="hero-col-item">Microsoft Sentinel</span>
+          <span class="hero-col-item">KQL Analytics</span>
+          <span class="hero-col-item">Defender XDR</span>
+          <span class="hero-col-item">MITRE ATT&amp;CK</span>
+          <span class="hero-col-item">Azure Monitor</span>
+        </div>
       </div>
 
-      <p class="hero-desc">
-        Associate Security Engineer at Paramount Computer Systems architecting end-to-end Microsoft Sentinel telemetry pipelines, custom interactive Workbooks, API-based log ingestion, Logstash grok filters, Logic Apps SOAR automation, and Microsoft Security Copilot. Proven delivery for government entities, airlines, telecom, and healthcare enterprises across India and the UAE.
-      </p>
+      <!-- Col 3: Automation -->
+      <div class="hero-col">
+        <div class="hero-col-label">Automation &amp; AI</div>
+        <div class="hero-col-items">
+          <span class="hero-col-item">Azure Logic Apps</span>
+          <span class="hero-col-item">SOAR Playbooks</span>
+          <span class="hero-col-item">Security Copilot</span>
+          <span class="hero-col-item">Agentic AI (MCP)</span>
+          <span class="hero-col-item">Copilot Studio</span>
+        </div>
+      </div>
 
-      <div class="hero-btn-group">
-        <a href="#projects" class="btn-pill btn-pill-primary">
-          VIEW PROJECTS
-        </a>
-        <button class="btn-pill btn-pill-primary open-resume-btn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          RESUME
-        </button>
+      <!-- Col 4: Certifications -->
+      <div class="hero-col">
+        <div class="hero-col-label">Certified</div>
+        <div class="hero-col-items">
+          <span class="hero-col-item">SC-200 Security Analyst</span>
+          <span class="hero-col-item">AZ-900 Azure Fundamentals</span>
+          <span class="hero-col-item">SC-900 Security</span>
+          <span class="hero-col-item">Frontier Transformation Eng</span>
+          <span class="hero-col-item">Agentic AI Architect</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom status bar -->
+    <div class="hero-statusbar" aria-hidden="true">
+      <div class="statusbar-item">
+        <span>PARAMOUNT COMPUTER SYSTEMS</span>
+        <span>·</span>
+        <span>ASSOCIATE SECURITY ENGINEER</span>
+      </div>
+      <div class="statusbar-item">
+        <span id="hero-clock">—</span>
+        <span>·</span>
+        <span>COIMBATORE, TN · ERNAKULAM, KL, INDIA</span>
+      </div>
+      <div class="statusbar-item">
+        <span class="status-dot"></span>
+        <span>DEFENSE ACTIVE</span>
+        <span>·</span>
+        <span>AVAILABLE FOR GLOBAL PROJECTS</span>
       </div>
     </div>
+
   </section>
 
-  <!-- ==========================================================================
-       GLOBAL CLIENT IMPACT STRIP
-       ========================================================================== -->
-  <div class="client-impact-strip">
-    <div class="container">
-      <div class="client-impact-title">Enterprise Security & SIEM Delivery Across Global Sectors</div>
-      <div class="client-sectors-grid">
-        <div class="client-sector-item">
-          <span class="client-sector-dot"></span>
-          <span>Dubai & Kuwait Government Entities</span>
-        </div>
-        <div class="client-sector-item">
-          <span class="client-sector-dot"></span>
-          <span>Commercial Airlines & Aviation</span>
-        </div>
-        <div class="client-sector-item">
-          <span class="client-sector-dot"></span>
-          <span>Telecommunications Providers (UAE & India)</span>
-        </div>
-        <div class="client-sector-item">
-          <span class="client-sector-dot"></span>
-          <span>Healthcare & Hospital Networks</span>
-        </div>
-        <div class="client-sector-item">
-          <span class="client-sector-dot"></span>
-          <span>Higher Education & Research Institutions</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+  <main class="main-content" id="main">
 
-  <!-- ==========================================================================
-       ABOUT ME ("WHO I AM")
-       ========================================================================== -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">ABOUT ME</span>
-        <h2 class="section-title">Who I Am</h2>
+    <!-- ── ABOUT ── -->
+    <section class="section" id="about" aria-label="About Jiss Boban">
+      <div class="sec-header">
+        <div>
+          <div class="sec-label">Profile</div>
+          <h1 class="sec-title">Security Engineer &amp;<br><em>Microsoft Architect.</em></h1>
+        </div>
+        <p class="sec-subtitle">
+          Designing and deploying enterprise cyber-defence at the intersection of
+          Microsoft Sentinel, AI automation, and cloud security — for government, aviation,
+          telecom, and healthcare clients across India and the GCC.
+        </p>
       </div>
 
       <div class="about-grid">
-        <!-- Elegant Portrait Card with Smooth Hover Reveal -->
-        <div class="about-image-card">
-          <img src="assets/images/ai-portrait-primary.png" alt="Er. Jiss Boban" class="about-img-primary">
-          <img src="assets/images/ai-portrait-action.png" alt="Er. Jiss Boban in Action" class="about-img-secondary">
-          <div class="about-reveal-pill">HOVER TO REVEAL</div>
-        </div>
-
-        <!-- Details & Story Content -->
-        <div class="about-details">
-          <div class="social-links-row">
-            <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
-            <a href="mailto:jissboban@gmail.com" class="social-icon-btn" aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </a>
-            <a href="tel:+918921637620" class="social-icon-btn" aria-label="Phone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </a>
-          </div>
-
-          <ul class="about-bullets-list">
-            <li class="about-bullet-item">
-              Associate Security Engineer at <strong>Paramount Computer Systems</strong> (Coimbatore, Tamil Nadu), delivering enterprise Microsoft Sentinel SIEM deployments and cloud defense across India and the GCC.
-            </li>
-            <li class="about-bullet-item">
-              Verified <strong>Frontier Transformation Engineer</strong> by Microsoft AI Frontiers and certified <strong>Microsoft Security Operations Analyst Associate (SC-200)</strong>.
-            </li>
-            <li class="about-bullet-item">
-              End-to-end Sentinel engineering: Interactive Workbooks, API-based Ingestion (DCE / Logs Ingestion API), Logstash pipelines, Azure Monitor Agent (AMA), and Logic Apps SOAR automation.
-            </li>
-            <li class="about-bullet-item">
-              Deep expertise in <strong>Microsoft Security Copilot</strong> and Agentic AI architectures (Microsoft Copilot Studio, Azure AI Foundry, Anthropic Model Context Protocol [MCP]).
-            </li>
-            <li class="about-bullet-item">
-              Winner of the prestigious <strong>PT Thomas MLA Excellence Award</strong> for academic achievements in Computer Science & Engineering and Electronics & Communication Engineering.
-            </li>
-            <li class="about-bullet-item">
-              B.Tech in Computer Science & Engineering with Minor in Electronics from <strong>AISAT</strong> with <strong>8.65 CGPA</strong>, honored member of the <strong>Principal’s Club</strong>, and builder of the state-recognized <em>Golden Eye Rescue Drone</em>.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       EXPERIENCE SECTION (WORK & EDUCATION)
-       ========================================================================== -->
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">CAREER PATH</span>
-        <h2 class="section-title">Experience</h2>
-        <p class="section-sub">Building resilient enterprise security solutions, cloud defense, and AI transformation</p>
-      </div>
-
-      <!-- Tab Controls (Work / Education) -->
-      <div class="tabs-control-row">
-        <button class="tab-control-btn active" data-tab="work">Work</button>
-        <button class="tab-control-btn" data-tab="education">Education</button>
-      </div>
-
-      <!-- Tab Content: Work -->
-      <div class="tab-pane active" id="tab-work">
-        <!-- Paramount Computer Systems: Associate Security Engineer -->
-        <div class="experience-card">
-          <div class="exp-header">
-            <div class="exp-title-row">
-              <h3 class="exp-title">Associate Security Engineer</h3>
-              <span class="exp-badge-current">CURRENT</span>
+        <div class="about-portrait reveal">
+          <img
+            src="assets/images/jiss-portrait-ai.jpg"
+            alt="Jiss Boban — Associate Security Engineer"
+            loading="eager"
+          />
+          <div class="about-portrait-badge">
+            <div>
+              <div class="badge-name">Jiss Boban</div>
+              <div class="badge-role">Paramount Computer Systems</div>
             </div>
-            <div class="exp-company">Paramount Computer Systems · Full-time</div>
-          </div>
-          <div class="exp-date">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            Nov 2025 - Present · 11 mos · Coimbatore, Tamil Nadu, India · On-site
-          </div>
-          <ul class="exp-bullets">
-            <li>Leading enterprise Microsoft Sentinel SIEM deployment, workspace design, and monitoring architecture for major Dubai & Kuwait government entities, airlines, telecom, and healthcare providers.</li>
-            <li>Engineering custom REST API connectors using Microsoft Sentinel Codeless Connector Framework (CCF / CCP) and high-throughput Data Collection Endpoints (DCE) for seamless third-party log integration.</li>
-            <li>Authoring precision custom Analytic Rules in KQL (Scheduled & Near-Real-Time [NRT] rules) mapped directly to MITRE ATT&CK tactics, with automated entity mapping, alert aggregation, and threshold alerting.</li>
-            <li>Building automated incident response playbooks in Azure Logic Apps (SOAR) for automated firewall IP blocking, Entra ID session revocation, threat intel enrichment, and adaptive cards dispatch.</li>
-            <li>Authoring custom interactive Microsoft Sentinel Workbooks for multi-cloud threat visibility, executive KPI reporting, and incident triage velocity.</li>
-            <li>Configuring Azure Monitor Agent (AMA) and precision Data Collection Rules (DCRs) with XPath filtering to suppress high-volume noise and optimize billable ingestion costs by over 60%.</li>
-          </ul>
-        </div>
-
-        <!-- Paramount Computer Systems: Cloud Security Intern -->
-        <div class="experience-card">
-          <div class="exp-header">
-            <div class="exp-title-row">
-              <h3 class="exp-title">Cloud Security</h3>
-            </div>
-            <div class="exp-company">Paramount Computer Systems · Internship</div>
-          </div>
-          <div class="exp-date">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            Jul 2025 - Oct 2025 · 4 mos · Hybrid
-          </div>
-          <ul class="exp-bullets">
-            <li>Monitored multi-tenant security telemetry and analyzed security incidents across Microsoft 365, Entra ID, and Azure resources.</li>
-            <li>Assisted in onboarding data connectors, auditing telemetry ingestion integrity, and investigating alert anomalies.</li>
-            <li>Gained hands-on experience in cloud compliance, Defender XDR incident management, and KQL querying.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Tab Content: Education -->
-      <div class="tab-pane" id="tab-education">
-        <div class="experience-card">
-          <div class="exp-header">
-            <div class="exp-title-row">
-              <h3 class="exp-title">Bachelor of Technology - BTech, Computer Science and Engineering</h3>
-            </div>
-            <div class="exp-company">Albertian Institute of Science & Technology (AISAT)</div>
-          </div>
-          <div class="exp-date">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            Jun 2021 – Jun 2025 · Grade: 8.65 CGPA · Minor in Electronics
-          </div>
-          <ul class="exp-bullets">
-            <li><strong>Principal’s Club Member:</strong> Honored member of the prestigious Principal’s Club at AISAT for maintaining a continuous CGPA of 8.0 and above throughout the degree program.</li>
-            <li>Specialized coursework in Computer Networks, Operating Systems, Linux Internals, Database Management Systems, and Python Programming.</li>
-            <li>Completed a Minor in Electronics, bridging low-level hardware communication, embedded systems, and cyber defense.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       PROJECTS SECTION (3D FLIP CARDS)
-       ========================================================================== -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">FEATURED WORK</span>
-        <h2 class="section-title">Projects</h2>
-        <p class="section-sub">Real-world systems across AI Robotics, Sentinel Workbooks, Ingestion Pipelines, and Security Copilot</p>
-      </div>
-
-      <div class="projects-grid">
-        <!-- Project 1: Golden Eye - The Rescue Drone (User Uploaded Photo) -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/drone.jpg" alt="Golden Eye The Rescue Drone" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">Golden Eye – The Rescue Drone</h3>
-                <span class="flip-prompt">STATE GOVT SELECTED · CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>Golden Eye – The Rescue Drone</h4>
-                <p>
-                  IoT-based rescue drone officially selected by KTU and exhibited at Kerala’s 4th Anniversary <em>ENTE KERALAM</em> government expo. Features YOLOv8-trained human detection, real-time face recognition via ESP32-CAM, and load-lifting capability for emergency survival supplies in remote disaster zones.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">YOLOv8 AI</span>
-                  <span class="flip-tag">ESP32-CAM</span>
-                  <span class="flip-tag">IoT Robotics</span>
-                  <span class="flip-tag">KTU Ente Keralam</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
+            <div class="badge-status">
+              <span class="status-dot" style="width:5px;height:5px;"></span>
+              Active
             </div>
           </div>
         </div>
 
-        <!-- Project 2: Microsoft Sentinel Interactive Workbooks -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/project-workbook.jpg" alt="Microsoft Sentinel Interactive Workbooks" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">Sentinel Interactive Workbooks & Executive SOC KPI Dashboards</h3>
-                <span class="flip-prompt">CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>Sentinel Interactive Workbooks</h4>
-                <p>
-                  Engineered visual SOC dashboards mapping global multi-cloud attack vectors, authentication anomalies, and MITRE ATT&CK coverage in real time. Features parameterized KQL metrics, alert severity heatmaps, and executive reporting views deployed for enterprise clients.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">Sentinel Workbooks</span>
-                  <span class="flip-tag">KQL Visualizations</span>
-                  <span class="flip-tag">SOC KPIs</span>
-                  <span class="flip-tag">Threat Maps</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: API Ingestion & Logstash Pipelines -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/project-logstash.jpg" alt="API-Based Ingestion & Logstash Pipelines" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">API-Based Custom Ingestion & Logstash Pipelines</h3>
-                <span class="flip-prompt">CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>API & Logstash Ingestion Pipelines</h4>
-                <p>
-                  Architected high-volume ingestion streams using Azure Monitor Logs Ingestion API (DCE) and Linux Logstash forwarders. Developed custom grok filtering pipelines and ingestion-time KQL transformations to sanitize PII and route multi-terabyte feeds into Azure Log Analytics.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">Logs Ingestion API</span>
-                  <span class="flip-tag">Logstash Pipelines</span>
-                  <span class="flip-tag">DCE Endpoints</span>
-                  <span class="flip-tag">ASIM Parsers</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4: Microsoft Security Copilot & Agentic AI -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/project-copilot.jpg" alt="Microsoft Security Copilot" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">Microsoft Security Copilot & Agentic AI Triage</h3>
-                <span class="flip-prompt">CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>Security Copilot & Agentic AI</h4>
-                <p>
-                  Implemented AI-assisted incident investigation connecting Microsoft Security Copilot, Copilot Studio, and Anthropic Model Context Protocol (MCP). Automated promptbook workflows for rapid forensic drilldowns, entity extraction, and multi-stage alert correlation.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">Security Copilot</span>
-                  <span class="flip-tag">Copilot Studio</span>
-                  <span class="flip-tag">MCP Architecture</span>
-                  <span class="flip-tag">Promptbooks</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5: Azure Logic Apps (SOAR) Automated Playbooks & Incident Remediation -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/project-soar.jpg" alt="Azure Logic Apps SOAR Playbooks & Automation" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">Azure Logic Apps (SOAR) Automated Playbooks</h3>
-                <span class="flip-prompt">AUTOMATION WORKFLOW · CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>Logic Apps SOAR Automation</h4>
-                <p>
-                  Engineered automated incident response playbooks triggered on high-severity Sentinel alerts. Performs real-time malicious IP containment on enterprise firewalls, revokes compromised user sessions in Microsoft Entra ID, queries threat intelligence feeds, and notifies on-call SOC teams via automated adaptive cards.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">Azure Logic Apps</span>
-                  <span class="flip-tag">SOAR Playbooks</span>
-                  <span class="flip-tag">Automated IP Containment</span>
-                  <span class="flip-tag">Entra ID Session Revoke</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 6: Microsoft Sentinel Codeless Connector Framework (CCF) & Custom Analytic Rules -->
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <!-- Front -->
-            <div class="flip-card-front">
-              <div class="flip-card-image-wrap">
-                <img src="assets/images/project-ccf-rules.jpg" alt="Codeless Connector Framework CCF & Custom Analytic Rules" class="flip-card-img">
-              </div>
-              <div class="flip-card-front-content">
-                <h3 class="flip-card-title">Sentinel Codeless Connector Framework (CCF) & Custom Analytic Rules</h3>
-                <span class="flip-prompt">REST API & KQL RULES · CLICK TO FLIP</span>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-card-back">
-              <div>
-                <h4>Sentinel CCF & Custom Analytic Rules</h4>
-                <p>
-                  Engineered turnkey REST API data ingestion using Microsoft Sentinel Codeless Connector Framework (CCF / CCP) with JSON configuration schemas and automated API polling. Authored high-fidelity custom Analytic Rules in KQL mapped to MITRE ATT&CK tactics, utilizing automated entity mapping, alert aggregation, and threshold alerting to detect advanced persistence and lateral movement.
-                </p>
-              </div>
-              <div>
-                <div class="flip-card-tags">
-                  <span class="flip-tag">Sentinel CCF / CCP</span>
-                  <span class="flip-tag">Custom Analytic Rules</span>
-                  <span class="flip-tag">KQL Detections</span>
-                  <span class="flip-tag">MITRE ATT&CK</span>
-                </div>
-                <span class="flip-prompt">CLICK TO FLIP BACK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       HONORS & AWARDS SECTION (NEW)
-       ========================================================================== -->
-  <section id="awards" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">RECOGNITION</span>
-        <h2 class="section-title">Honors & Awards</h2>
-        <p class="section-sub">Turning passion into performance and effort into excellence</p>
-      </div>
-
-      <div class="awards-grid">
-        <!-- Award 1: PT Thomas MLA Excellence Award -->
-        <div class="award-card">
-          <div class="award-badge-top">🏆 State Legislative Honor</div>
-          <h3 class="award-title">PT Thomas MLA Excellence Award</h3>
-          <p class="award-desc">
-            "Grateful and proud to be honored with the PT Thomas MLA Excellence Award for academic achievements in Computer Science & Engineering and Electronics & Communication Engineering. Received this prestigious recognition from MLA Uma Thomas 🌟 Another milestone unlocked — and the journey’s just getting started."
+        <div class="about-copy reveal">
+          <h2 class="about-headline">
+            Engineering cyber-defence<br>at enterprise scale.
+          </h2>
+          <p class="about-para">
+            I'm <strong>Jiss Boban</strong> — an Associate Security Engineer and certified
+            <strong>Microsoft Frontier Transformation Engineer</strong>. At Paramount Computer Systems,
+            I architect end-to-end security stacks: from <strong>Microsoft Sentinel SIEM</strong>
+            workspace design and custom KQL detection rules to <strong>Azure Logic Apps SOAR</strong>
+            automation and <strong>Security Copilot Agentic AI</strong> frameworks.
           </p>
-          <div class="award-giver">Presented by MLA Uma Thomas · Kerala</div>
-        </div>
-
-        <!-- Award 2: KTU State Selection for Ente Keralam -->
-        <div class="award-card">
-          <div class="award-badge-top">🚁 Government Exhibition Selection</div>
-          <h3 class="award-title">KTU State Project Selection — ENTE KERALAM</h3>
-          <p class="award-desc">
-            "Golden Eye – The Rescue Drone was officially selected by APJ Abdul Kalam Technological University (KTU) to be showcased at the prestigious ENTE KERALAM government function celebrating Kerala’s 4th Anniversary. Exhibited technological innovation that meets social impact."
+          <p class="about-para">
+            Proven delivery across <strong>Dubai &amp; Kuwait government entities</strong>,
+            commercial airlines, telecommunications providers, and healthcare systems.
+            <strong>SC-200 Security Operations Analyst</strong> and
+            <strong>AZ-900 Azure Fundamentals</strong> certified, with a B.Tech in
+            Computer Science &amp; Engineering (CGPA 8.65) from AISAT, Kerala.
           </p>
-          <div class="award-giver">Selected by KTU & Kerala State Government</div>
-        </div>
 
-        <!-- Award 3: Principal's Club Member -->
-        <div class="award-card">
-          <div class="award-badge-top">🎓 Academic Excellence</div>
-          <h3 class="award-title">AISAT Principal’s Club Induction</h3>
-          <p class="award-desc">
-            Inducted into the elite Principal’s Club at the Albertian Institute of Science and Technology for continuous academic excellence, maintaining a consistent CGPA above 8.0 (8.65) throughout 4 years of engineering studies.
-          </p>
-          <div class="award-giver">Albertian Institute of Science & Technology</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       LICENSES & CERTIFICATIONS SECTION
-       ========================================================================== -->
-  <section id="certifications" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">VERIFIED CREDENTIALS</span>
-        <h2 class="section-title">Certifications</h2>
-        <p class="section-sub">Official credentials verified across Microsoft, Anthropic, IISc Bangalore, and NPTEL</p>
-      </div>
-
-      <div class="certifications-grid">
-        <!-- 1. Frontier Transformation Engineer -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft AI Frontiers (Research Lab)</div>
-          <h3 class="cert-title">Frontier Transformation Engineer</h3>
-          <div class="cert-date">Issued Aug 2026 · Expires Aug 2027</div>
-          <div class="cert-id">Credential ID: 248072e9-1319-42df-add0-3684a6ba1c24</div>
-          <a href="https://www.credly.com/badges/248072e9-1319-42df-add0-3684a6ba1c24/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Credly Credential →
-          </a>
-        </div>
-
-        <!-- 2. NPTEL / IISc Bangalore: Cancer Diagnosis (ELITE) -->
-        <div class="cert-card" style="border-color: rgba(217, 70, 239, 0.4);">
-          <div class="cert-issuer">IISc Bangalore / NPTEL (SWAYAM, Govt of India)</div>
-          <h3 class="cert-title">Electronic Systems for Cancer Diagnosis (ELITE Tag)</h3>
-          <div class="cert-date">12-Week Comprehensive Course · Score: 69% (Elite)</div>
-          <div class="cert-id">Biomedical systems & electronic healthcare detection · Ministry of Education</div>
-          <span class="cert-link" style="color: #34d399;">
-            ✓ Elite Tag Verified
-          </span>
-        </div>
-
-        <!-- 3. NPTEL: MEMS-Based Sensors -->
-        <div class="cert-card">
-          <div class="cert-issuer">NPTEL (SWAYAM, Ministry of Education, Govt of India)</div>
-          <h3 class="cert-title">Fabrication Techniques for MEMs-Based Sensors: Clinical Perspective</h3>
-          <div class="cert-date">July–October 2024 Session · 12-Week Course</div>
-          <div class="cert-id">MEMS sensor microfabrication & clinical healthcare technology</div>
-          <span class="cert-link" style="color: #34d399;">
-            ✓ Course Completed
-          </span>
-        </div>
-
-        <!-- 4. Agentic AI Business Solutions Architect -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">Agentic AI Business Solutions Architect</h3>
-          <div class="cert-date">Issued Jul 2026 · Expires Jul 2027</div>
-          <div class="cert-id">Credential ID: 3B82C5E9CBAA80CC (Skills: Microsoft Copilot Studio)</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/3B82C5E9CBAA80CC" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-
-        <!-- 5. Azure AI Apps and Agents Developer Associate -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">Azure AI Apps and Agents Developer Associate</h3>
-          <div class="cert-date">Issued Jul 2026 · Expires Jul 2027</div>
-          <div class="cert-id">Credential ID: C0331647B47FB79F (Skills: Azure AI Foundry)</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/C0331647B47FB79F" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-
-        <!-- 6. GitHub Copilot -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">GitHub Copilot (GH 300)</h3>
-          <div class="cert-date">Issued Jul 2026 · Expires Jul 2028</div>
-          <div class="cert-id">Credential ID: E8B9A47EF5D908E</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/E8B9A47EF5D908E" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-
-        <!-- 7. SC-200 Security Operations Analyst Associate -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">Security Operations Analyst Associate (SC-200)</h3>
-          <div class="cert-date">Issued May 2026 · Expires May 2027</div>
-          <div class="cert-id">Credential ID: CD094410B84FFB5D (Skills: Azure Sentinel)</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/CD094410B84FFB5D" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-
-        <!-- 8. Model Context Protocol -->
-        <div class="cert-card">
-          <div class="cert-issuer">Anthropic</div>
-          <h3 class="cert-title">Introduction to Model Context Protocol (MCP)</h3>
-          <div class="cert-date">Issued May 2026</div>
-          <div class="cert-id">Credential ID: sk976swhpc2z</div>
-          <a href="https://verify.skilljar.com/c/sk976swhpc2z" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Skilljar Credential →
-          </a>
-        </div>
-
-        <!-- 9. Building with the Claude API -->
-        <div class="cert-card">
-          <div class="cert-issuer">Anthropic</div>
-          <h3 class="cert-title">Building with the Claude API</h3>
-          <div class="cert-date">Issued May 2026</div>
-          <div class="cert-id">Credential ID: s8mz9m5ds74h</div>
-          <a href="https://verify.skilljar.com/c/s8mz9m5ds74h" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Skilljar Credential →
-          </a>
-        </div>
-
-        <!-- 10. AZ-900 Azure Fundamentals -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">Microsoft Certified: Azure Fundamentals (AZ-900)</h3>
-          <div class="cert-date">Issued Oct 2025</div>
-          <div class="cert-id">Credential ID: 5DA501A873AF0C1</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/5DA501A873AF0C1" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-
-        <!-- 11. SC-900 Security, Compliance & Identity -->
-        <div class="cert-card">
-          <div class="cert-issuer">Microsoft</div>
-          <h3 class="cert-title">Security, Compliance, and Identity Fundamentals (SC-900)</h3>
-          <div class="cert-date">Issued Aug 2025</div>
-          <div class="cert-id">Credential ID: 595208280845D4D1</div>
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/595208280845D4D1" target="_blank" rel="noopener noreferrer" class="cert-link">
-            Show Microsoft Credential →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SKILLS SECTION
-       ========================================================================== -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">TECHNICAL CAPABILITIES</span>
-        <h2 class="section-title">Skills</h2>
-      </div>
-
-      <div class="skills-wrapper">
-        <!-- Microsoft Sentinel & SIEM Mastery -->
-        <div class="skill-category-group">
-          <h3 class="skill-category-label">Microsoft Sentinel & SIEM Mastery</h3>
-          <div class="skill-pill-container">
-            <span class="skill-pill">🛡️ Microsoft Sentinel</span>
-            <span class="skill-pill">🧩 Codeless Connector Framework (CCF / CCP)</span>
-            <span class="skill-pill">🎯 Custom Analytic Rules (KQL)</span>
-            <span class="skill-pill">🗺️ MITRE ATT&CK Mapping</span>
-            <span class="skill-pill">📊 Interactive Sentinel Workbooks</span>
-            <span class="skill-pill">📡 API-Based Log Ingestion (DCE)</span>
-            <span class="skill-pill">⚙️ Logstash & Grok Pipelines</span>
-            <span class="skill-pill">🐧 Linux Syslog / CEF Forwarders</span>
-            <span class="skill-pill">📋 Data Collection Rules (DCR)</span>
-            <span class="skill-pill">⚡ Azure Monitor Agent (AMA)</span>
-            <span class="skill-pill">🔄 ASIM Normalization</span>
-            <span class="skill-pill">🔍 Microsoft Defender XDR</span>
-          </div>
-        </div>
-
-        <!-- SOAR & Automation -->
-        <div class="skill-category-group">
-          <h3 class="skill-category-label">SOAR, Security Copilot & Automation</h3>
-          <div class="skill-pill-container">
-            <span class="skill-pill">⚡ Azure Logic Apps (SOAR Playbooks)</span>
-            <span class="skill-pill">🤖 Microsoft Security Copilot</span>
-            <span class="skill-pill">🛡️ Automated Firewall IP Blocking</span>
-            <span class="skill-pill">👤 Entra ID Automated Account Isolation</span>
-            <span class="skill-pill">🚨 Incident Auto-Remediation</span>
-            <span class="skill-pill">📡 Webhooks & REST API Automation</span>
-          </div>
-        </div>
-
-        <!-- AI & Agentic Systems -->
-        <div class="skill-category-group">
-          <h3 class="skill-category-label">AI & Agentic Systems</h3>
-          <div class="skill-pill-container">
-            <span class="skill-pill">🤖 Microsoft Copilot Studio</span>
-            <span class="skill-pill">🔌 Model Context Protocol (MCP)</span>
-            <span class="skill-pill">🧠 Anthropic Claude API</span>
-            <span class="skill-pill">☁️ Azure AI Foundry</span>
-            <span class="skill-pill">💻 GitHub Copilot</span>
-            <span class="skill-pill">👁️ YOLOv8 Human Detection & Vision</span>
-          </div>
-        </div>
-
-        <!-- Languages & Querying -->
-        <div class="skill-category-group">
-          <h3 class="skill-category-label">Languages & Querying</h3>
-          <div class="skill-pill-container">
-            <span class="skill-pill">⚡ Kusto Query Language (KQL)</span>
-            <span class="skill-pill">🐍 Python</span>
-            <span class="skill-pill">💻 C Language</span>
-            <span class="skill-pill">🗄️ SQL</span>
-            <span class="skill-pill">📜 PowerShell</span>
-            <span class="skill-pill">🐚 Bash / Shell</span>
-          </div>
-        </div>
-
-        <!-- Platforms & Hardware (Minor in Electronics) -->
-        <div class="skill-category-group">
-          <h3 class="skill-category-label">Platforms & Electronics</h3>
-          <div class="skill-pill-container">
-            <span class="skill-pill">☁️ Microsoft Azure</span>
-            <span class="skill-pill">👤 Microsoft Entra ID (Azure AD)</span>
-            <span class="skill-pill">📦 Microsoft 365</span>
-            <span class="skill-pill">🌐 AWS CloudTrail</span>
-            <span class="skill-pill">🐧 Linux (Ubuntu / RHEL)</span>
-            <span class="skill-pill">🚁 Drone Robotics & ESP32-CAM</span>
-            <span class="skill-pill">🔬 MEMS Sensors & Microelectronics</span>
+          <div class="about-stats">
+            <div class="stat-box reveal">
+              <div class="stat-num">6<span>+</span></div>
+              <div class="stat-label">Enterprise Projects Delivered</div>
+            </div>
+            <div class="stat-box reveal">
+              <div class="stat-num">60<span>%</span></div>
+              <div class="stat-label">Log Ingestion Cost Reduction</div>
+            </div>
+            <div class="stat-box reveal">
+              <div class="stat-num">&lt;1<span>min</span></div>
+              <div class="stat-label">SOAR Auto-Containment MTTR</div>
+            </div>
+            <div class="stat-box reveal">
+              <div class="stat-num">11<span>+</span></div>
+              <div class="stat-label">Microsoft &amp; Anthropic Certifications</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ==========================================================================
-       CONTACT SECTION
-       ========================================================================== -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="contact-wrapper">
-        <h2 class="section-title" style="margin-bottom: 28px;">Contact</h2>
-
-        <!-- Phone Number -->
-        <div class="contact-item-row">
-          <span class="contact-icon">📞</span>
-          <span>Phone: <a href="tel:+918921637620" style="color: var(--text-primary); font-weight: 600; text-decoration: underline;">+91 8921637620</a></span>
-        </div>
-
-        <!-- Email -->
-        <div class="contact-item-row">
-          <span class="contact-icon">✉️</span>
-          <span>Email: <a href="mailto:jissboban@gmail.com" style="color: var(--text-primary); font-weight: 600; text-decoration: underline;">jissboban@gmail.com</a></span>
-        </div>
-
-        <!-- LinkedIn -->
-        <div class="contact-item-row">
-          <span class="contact-icon">🔗</span>
-          <span>LinkedIn: <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" style="color: var(--accent-magenta); font-weight: 600;">linkedin.com/in/jissboban07</a></span>
-        </div>
-
-        <!-- Location -->
-        <div class="contact-item-row">
-          <span class="contact-icon">📍</span>
-          <span>Coimbatore, Tamil Nadu & Ernakulam, Kerala, India</span>
-        </div>
-
-        <div class="social-links-row" style="margin-top: 24px;">
-          <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </a>
-          <a href="mailto:jissboban@gmail.com" class="social-icon-btn" aria-label="Email">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </a>
-          <a href="tel:+918921637620" class="social-icon-btn" aria-label="Phone">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </a>
-        </div>
-
-        <div class="contact-action-row">
-          <a href="mailto:jissboban@gmail.com" class="btn-pill btn-pill-primary">
-            SEND EMAIL
-          </a>
-          <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" class="btn-pill" style="background: rgba(255, 255, 255, 0.08); color: #fff;">
-            CONNECT ON LINKEDIN
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       PRINTABLE / VIEWABLE RESUME MODAL
-       ========================================================================== -->
-  <div class="resume-modal" id="resume-modal">
-    <div class="resume-paper">
-      <div class="resume-header">
+    <!-- ── EXPERIENCE ── -->
+    <section class="section" id="experience" aria-label="Work experience">
+      <div class="sec-header reveal">
         <div>
-          <h2 class="font-serif" style="font-size: 2.2rem; margin-bottom: 4px;">Er. Jiss Boban</h2>
-          <div style="color: var(--accent-magenta); font-size: 0.95rem; font-weight: 500;">
-            Associate Security Engineer | Microsoft Transformation Engineer
-          </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
-            Phone: +91 8921637620 • Email: jissboban@gmail.com • LinkedIn: linkedin.com/in/jissboban07<br>
-            Location: Coimbatore, Tamil Nadu & Ernakulam, Kerala, India
-          </div>
+          <div class="sec-label">Experience</div>
+          <h2 class="sec-title">Work &amp; <em>Education.</em></h2>
         </div>
-        <div style="display: flex; gap: 10px;">
-          <button class="btn-pill btn-pill-primary" id="print-resume-btn" style="padding: 8px 18px; font-size: 0.78rem;">
-            Print / Save PDF
-          </button>
-          <button class="btn-pill" id="resume-close-btn" style="background: rgba(255, 255, 255, 0.1); color: #fff; padding: 8px 14px; font-size: 0.78rem;">
-            Close ✕
-          </button>
-        </div>
-      </div>
-
-      <div style="font-size: 0.9rem; line-height: 1.7; color: var(--text-secondary);">
-        <h4 style="color: var(--accent-purple); font-size: 1.05rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin: 16px 0 10px 0;">SUMMARY</h4>
-        <p>
-          Associate Security Engineer at Paramount Computer Systems, certified Frontier Transformation Engineer by Microsoft AI Frontiers, and Microsoft Certified: Security Operations Analyst Associate (SC-200). Specialized in Microsoft Sentinel SIEM deployments, custom Sentinel Workbooks, API-based log ingestion, Linux Logstash grok filtering, Azure Logic Apps SOAR automation, and Microsoft Security Copilot. Proven delivery across government, aviation, telecom, and healthcare sectors in India and the GCC. Winner of the PT Thomas MLA Excellence Award and builder of the state-recognized Golden Eye Rescue Drone.
+        <p class="sec-subtitle">
+          Building and deploying Microsoft security stacks at enterprise scale since 2025.
         </p>
-
-        <h4 style="color: var(--accent-purple); font-size: 1.05rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin: 16px 0 10px 0;">EXPERIENCE</h4>
-        <div style="margin-bottom: 12px;">
-          <strong style="color: var(--text-primary);">Associate Security Engineer</strong> — Paramount Computer Systems (Full-time)
-          <div style="font-size: 0.82rem; color: var(--text-muted);">Nov 2025 - Present · Coimbatore, Tamil Nadu, India</div>
-          <ul style="padding-left: 20px; margin-top: 4px;">
-            <li>Lead Microsoft Sentinel SIEM architecture and monitoring deployment for Dubai & Kuwait government entities, airlines, telecom, and healthcare providers.</li>
-            <li>Author interactive Sentinel Workbooks for multi-cloud threat mapping, executive reporting, and SOC KPIs.</li>
-            <li>Engineer custom API-based ingestion pipelines using Azure Logs Ingestion API (DCE) and Linux Logstash.</li>
-            <li>Build automated incident remediation playbooks in Azure Logic Apps and integrate Microsoft Security Copilot.</li>
-            <li>Configure Azure Monitor Agent (AMA) and precision DCR filtering, cutting client log ingestion costs by over 60%.</li>
-          </ul>
-        </div>
-
-        <div style="margin-bottom: 12px;">
-          <strong style="color: var(--text-primary);">Cloud Security Intern</strong> — Paramount Computer Systems
-          <div style="font-size: 0.82rem; color: var(--text-muted);">Jul 2025 - Oct 2025 · 4 mos · Hybrid</div>
-          <ul style="padding-left: 20px; margin-top: 4px;">
-            <li>Monitored multi-tenant security telemetry and analyzed incidents across Microsoft 365, Entra ID, and Azure.</li>
-            <li>Conducted connector health verification and security posture audits.</li>
-          </ul>
-        </div>
-
-        <h4 style="color: var(--accent-purple); font-size: 1.05rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin: 16px 0 10px 0;">AWARDS & HONORS</h4>
-        <ul style="padding-left: 20px; margin-bottom: 10px;">
-          <li><strong>PT Thomas MLA Excellence Award:</strong> Honored for academic achievements in Computer Science & Engineering and Electronics & Communication Engineering by MLA Uma Thomas.</li>
-          <li><strong>KTU State Project Selection:</strong> Golden Eye Rescue Drone officially selected by KTU for showcase at the prestigious ENTE KERALAM government expo.</li>
-          <li><strong>AISAT Principal’s Club Member:</strong> Recognized for academic excellence with continuous CGPA of 8.0+ (8.65).</li>
-        </ul>
-
-        <h4 style="color: var(--accent-purple); font-size: 1.05rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin: 16px 0 10px 0;">EDUCATION</h4>
-        <div style="margin-bottom: 10px;">
-          <strong style="color: var(--text-primary);">Bachelor of Technology (BTech) in Computer Science & Engineering (Minor in Electronics)</strong>
-          <div style="font-size: 0.82rem; color: var(--text-muted);">Albertian Institute of Science & Technology (AISAT) · Jun 2021 – Jun 2025</div>
-          <div>Grade: <strong>8.65 CGPA</strong> · Member of the Principal’s Club</div>
-        </div>
-
-        <h4 style="color: var(--accent-purple); font-size: 1.05rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin: 16px 0 10px 0;">LICENSES & CERTIFICATIONS</h4>
-        <ul style="padding-left: 20px;">
-          <li>Frontier Transformation Engineer — Microsoft AI Frontiers (Credential ID: 248072e9-1319-42df-add0-3684a6ba1c24)</li>
-          <li>Electronic Systems for Cancer Diagnosis (ELITE Tag) — IISc Bangalore / NPTEL (SWAYAM, Govt of India)</li>
-          <li>Fabrication Techniques for MEMs-Based Sensors — NPTEL (SWAYAM, Govt of India)</li>
-          <li>Microsoft Certified: Agentic AI Business Solutions Architect (Credential ID: 3B82C5E9CBAA80CC)</li>
-          <li>Microsoft Certified: Azure AI Apps and Agents Developer Associate (Credential ID: C0331647B47FB79F)</li>
-          <li>GitHub Copilot (Credential ID: E8B9A47EF5D908E)</li>
-          <li>Microsoft Certified: Security Operations Analyst Associate SC-200 (Credential ID: CD094410B84FFB5D)</li>
-          <li>Introduction to Model Context Protocol (MCP) — Anthropic (Credential ID: sk976swhpc2z)</li>
-          <li>Building with the Claude API — Anthropic (Credential ID: s8mz9m5ds74h)</li>
-          <li>Microsoft Certified: Azure Fundamentals AZ-900 (Credential ID: 5DA501A873AF0C1)</li>
-          <li>Microsoft Certified: Security, Compliance, and Identity Fundamentals SC-900 (Credential ID: 595208280845D4D1)</li>
-        </ul>
       </div>
+
+      <div class="exp-timeline">
+
+        <div class="exp-item reveal">
+          <div class="exp-time-col">
+            <div class="exp-period">Nov 2025 — Present</div>
+            <span class="exp-badge">Full-Time</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-org">Paramount Computer Systems</div>
+            <div class="exp-role-title">Associate Security Engineer</div>
+            <p class="exp-desc-text">
+              Leading Microsoft Sentinel SIEM architecture and monitoring deployment for enterprise clients
+              across Dubai, Kuwait, and India — spanning government entities, commercial airlines,
+              telecom, and healthcare providers.
+            </p>
+            <ul class="exp-bullets-ms">
+              <li>Architect Sentinel workspaces, custom KQL Workbooks, Scheduled &amp; NRT analytic rules</li>
+              <li>Engineer REST API ingestion pipelines via Azure Logs Ingestion API (DCE) and Linux Logstash forwarders with custom grok filtering</li>
+              <li>Build Azure Logic Apps SOAR playbooks for boundary IP isolation, Entra ID session revocation, and Teams Adaptive Cards</li>
+              <li>Configure Azure Monitor Agent (AMA) + DCR XPath filtering — cutting client ingestion costs by &gt;60%</li>
+              <li>Deploy Microsoft Security Copilot forensic promptbooks and Copilot Studio autonomous skills with Anthropic MCP tools</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-time-col">
+            <div class="exp-period">Jul 2025 — Oct 2025</div>
+            <span class="exp-badge">Internship</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-org">Paramount Computer Systems</div>
+            <div class="exp-role-title">Cloud Security Intern</div>
+            <p class="exp-desc-text">
+              Monitored multi-tenant security telemetry and analysed incidents across Microsoft 365,
+              Entra ID, and Azure. Conducted connector health verification and security posture audits.
+            </p>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-time-col">
+            <div class="exp-period">Jun 2021 — Jun 2025</div>
+            <span class="exp-badge">Education</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-org">Albertian Institute of Science &amp; Technology</div>
+            <div class="exp-role-title">B.Tech — Computer Science &amp; Engineering · CGPA 8.65</div>
+            <p class="exp-desc-text">
+              Minor in Electronics. Principal's Club Member for maintaining CGPA 8.0+ across four years.
+              Affiliated with APJ Abdul Kalam Technological University (KTU), Ernakulam, Kerala.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SELECTED WORK ── -->
+    <section class="section" id="projects" aria-label="Selected work and projects">
+      <div class="sec-header reveal">
+        <div>
+          <div class="sec-label">Portfolio</div>
+          <h2 class="sec-title">Selected <em>Work.</em></h2>
+        </div>
+        <p class="sec-subtitle">
+          Real-world enterprise security systems — from SIEM telemetry pipelines and SOAR automation
+          to Agentic AI and IoT robotics.
+        </p>
+      </div>
+
+      <div class="project-rows">
+
+        <div class="project-item reveal">
+          <div class="proj-num">01</div>
+          <div class="proj-body">
+            <div class="proj-title">Golden Eye — The Rescue Drone</div>
+            <div class="proj-subtitle">Edge AI Computer Vision · Autonomous Disaster Reconnaissance</div>
+            <p class="proj-desc">
+              Autonomous emergency response drone officially selected by APJ Abdul Kalam Technological University
+              to represent Kerala at the State Government's 4th Anniversary ENTE KERALAM Expo.
+              Real-time YOLOv8 human detection, ESP32-CAM wireless video feed, and servo-actuated supply delivery.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">YOLOv8 AI</span>
+              <span class="proj-tag">ESP32-CAM</span>
+              <span class="proj-tag">IoT Robotics</span>
+              <span class="proj-tag">Computer Vision</span>
+              <span class="proj-tag">Edge Inference</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2025</div>
+            <span class="proj-award">State Govt Selected</span>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="proj-num">02</div>
+          <div class="proj-body">
+            <div class="proj-title">Sentinel Interactive Workbooks</div>
+            <div class="proj-subtitle">Multi-Cloud Threat Intelligence · SOC KPIs · Executive Dashboards</div>
+            <p class="proj-desc">
+              Visual SOC telemetry dashboards mapping global multi-cloud attack surfaces, authentication anomalies,
+              and MITRE ATT&amp;CK detection coverage in real time. Parameterised KQL metrics cross-referencing Defender XDR,
+              with granular dwell-time, MTTA, and MTTR calculation for government &amp; airline clients.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Microsoft Sentinel</span>
+              <span class="proj-tag">KQL</span>
+              <span class="proj-tag">MITRE ATT&amp;CK</span>
+              <span class="proj-tag">Defender XDR</span>
+              <span class="proj-tag">SOC KPIs</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2026</div>
+            <span class="proj-award">Enterprise SIEM</span>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="proj-num">03</div>
+          <div class="proj-body">
+            <div class="proj-title">High-Throughput API Ingestion &amp; Logstash</div>
+            <div class="proj-subtitle">Azure Monitor Logs Ingestion API (DCE) · Linux Forwarders · ASIM</div>
+            <p class="proj-desc">
+              Enterprise log ingestion pipelines routing multi-terabyte unformatted streams into Azure Log Analytics
+              with custom grok filtering, ASIM normalisation, and DCR XPath transformation filters —
+              achieving sub-3-second end-to-end latency and &gt;60% billable cost reduction.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Azure DCE</span>
+              <span class="proj-tag">Linux Logstash</span>
+              <span class="proj-tag">Grok Filtering</span>
+              <span class="proj-tag">ASIM</span>
+              <span class="proj-tag">DCR</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2026</div>
+            <span class="proj-award">Sub-3s Latency</span>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="proj-num">04</div>
+          <div class="proj-body">
+            <div class="proj-title">Security Copilot &amp; Agentic AI Triage</div>
+            <div class="proj-subtitle">Copilot Studio · Anthropic MCP · Forensic Promptbooks</div>
+            <p class="proj-desc">
+              Autonomous forensic investigation framework integrating Microsoft Security Copilot, Copilot Studio,
+              and Anthropic Model Context Protocol (MCP) — collapsing analyst fatigue with custom skills executing
+              dynamic KQL lookups, multi-stage attack chain synthesis, and actionable security briefs.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Security Copilot</span>
+              <span class="proj-tag">Copilot Studio</span>
+              <span class="proj-tag">Anthropic MCP</span>
+              <span class="proj-tag">Claude API</span>
+              <span class="proj-tag">Agentic AI</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2026</div>
+            <span class="proj-award">Agentic AI</span>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="proj-num">05</div>
+          <div class="proj-body">
+            <div class="proj-title">Azure Logic Apps (SOAR) Automated Playbooks</div>
+            <div class="proj-subtitle">Zero-Touch Boundary Containment · Identity Quarantine · Teams Integration</div>
+            <p class="proj-desc">
+              Automated incident remediation playbooks triggered on high-severity Sentinel alerts.
+              Dynamic REST API webhooks push malicious IPs to firewalls, Entra ID sessions are immediately
+              revoked, and Teams Adaptive Cards notify analysts with override options — all in under 60 seconds.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Azure Logic Apps</span>
+              <span class="proj-tag">SOAR</span>
+              <span class="proj-tag">Auto-Containment</span>
+              <span class="proj-tag">Entra ID</span>
+              <span class="proj-tag">Microsoft Teams</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2026</div>
+            <span class="proj-award">Sub-Minute MTTR</span>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="proj-num">06</div>
+          <div class="proj-body">
+            <div class="proj-title">Sentinel CCF &amp; Custom Analytic Rules</div>
+            <div class="proj-subtitle">Codeless Connector Framework · MITRE KQL Engineering · Noise Suppression</div>
+            <p class="proj-desc">
+              Turnkey data connectors via Microsoft Sentinel Codeless Connector Framework (CCF/CCP),
+              combined with bespoke high-fidelity Scheduled and NRT analytic rules mapped to MITRE ATT&amp;CK tactics.
+              XPath and DCR transformation filters eliminate &gt;60% of billable noise before ingestion.
+            </p>
+            <div class="proj-tags">
+              <span class="proj-tag">Sentinel CCF</span>
+              <span class="proj-tag">Custom Rules</span>
+              <span class="proj-tag">DCR Filtering</span>
+              <span class="proj-tag">KQL</span>
+              <span class="proj-tag">NRT Analytics</span>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-year">2026</div>
+            <span class="proj-award">&gt;60% Cost Saving</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CREDENTIALS ── -->
+    <section class="section" id="credentials" aria-label="Verified credentials and certifications">
+      <div class="sec-header reveal">
+        <div>
+          <div class="sec-label">Credentials</div>
+          <h2 class="sec-title">Certifications &amp; <em>Licenses.</em></h2>
+        </div>
+        <p class="sec-subtitle">
+          Verified across Microsoft, Anthropic, NPTEL, and IISc Bangalore.
+        </p>
+      </div>
+
+      <div class="cred-rows">
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Frontier Transformation Engineer</div>
+            <div class="cred-org">Microsoft AI Frontiers · ID: 248072e9-1319-42df-add0-3684a6ba1c24</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Aug 2026</span>
+            <a href="https://www.credly.com/badges/248072e9-1319-42df-add0-3684a6ba1c24/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cred-link">Credly ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Security Operations Analyst Associate (SC-200)</div>
+            <div class="cred-org">Microsoft · ID: CD094410B84FFB5D</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">May 2026</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/CD094410B84FFB5D" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Agentic AI Business Solutions Architect</div>
+            <div class="cred-org">Microsoft · ID: 3B82C5E9CBAA80CC</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Jul 2026</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/3B82C5E9CBAA80CC" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Azure AI Apps and Agents Developer Associate</div>
+            <div class="cred-org">Microsoft · ID: C0331647B47FB79F</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Jul 2026</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/C0331647B47FB79F" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">GitHub Copilot (GH 300)</div>
+            <div class="cred-org">Microsoft · ID: E8B9A47EF5D908E</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Jul 2026</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/E8B9A47EF5D908E" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Introduction to Model Context Protocol (MCP)</div>
+            <div class="cred-org">Anthropic · ID: sk976swhpc2z</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">May 2026</span>
+            <a href="https://verify.skilljar.com/c/sk976swhpc2z" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Building with the Claude API</div>
+            <div class="cred-org">Anthropic · ID: s8mz9m5ds74h</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">May 2026</span>
+            <a href="https://verify.skilljar.com/c/s8mz9m5ds74h" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Azure Fundamentals (AZ-900)</div>
+            <div class="cred-org">Microsoft · ID: 5DA501A873AF0C1</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Oct 2025</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/5DA501A873AF0C1" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Security, Compliance &amp; Identity Fundamentals (SC-900)</div>
+            <div class="cred-org">Microsoft · ID: 595208280845D4D1</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Aug 2025</span>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/595208280845D4D1" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Electronic Systems for Cancer Diagnosis (ELITE Tag)</div>
+            <div class="cred-org">IISc Bangalore / NPTEL · Score: 69%</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">2024</span>
+            <span class="cred-link" style="cursor:default;color:var(--text-3);">Elite Certified</span>
+          </div>
+        </div>
+
+        <div class="cred-item reveal">
+          <div>
+            <div class="cred-name">Fabrication Techniques for MEMs-Based Sensors</div>
+            <div class="cred-org">NPTEL / SWAYAM, Government of India</div>
+          </div>
+          <div class="cred-right">
+            <span class="cred-date">Oct 2024</span>
+            <span class="cred-link" style="cursor:default;color:var(--text-3);">Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── HONORS ── -->
+    <section class="section" id="honors" aria-label="Honors and recognition">
+      <div class="sec-header reveal">
+        <div>
+          <div class="sec-label">Recognition</div>
+          <h2 class="sec-title">Honors &amp; <em>Awards.</em></h2>
+        </div>
+      </div>
+
+      <div class="honor-grid">
+
+        <div class="honor-card reveal">
+          <div class="honor-icon">🏆</div>
+          <div class="honor-name">PT Thomas MLA Excellence Award</div>
+          <p class="honor-desc">
+            Awarded for outstanding academic achievements in Computer Science &amp; Engineering and Electronics.
+            Presented directly by MLA Uma Thomas, Kerala State Legislature.
+          </p>
+          <div class="honor-giver">Presented by MLA Uma Thomas · Kerala</div>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-icon">🚁</div>
+          <div class="honor-name">KTU State Selection — ENTE KERALAM</div>
+          <p class="honor-desc">
+            Golden Eye – The Rescue Drone was officially selected by APJ Abdul Kalam Technological University
+            to be showcased at Kerala's 4th Anniversary State Government Expo.
+          </p>
+          <div class="honor-giver">KTU &amp; Kerala State Government</div>
+        </div>
+
+        <div class="honor-card reveal">
+          <div class="honor-icon">🎓</div>
+          <div class="honor-name">AISAT Principal's Club</div>
+          <p class="honor-desc">
+            Continuous academic excellence recognition for maintaining a CGPA above 8.0 (final: 8.65)
+            across all four years of engineering studies.
+          </p>
+          <div class="honor-giver">Albertian Institute of Science &amp; Technology</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="section" id="contact" aria-label="Contact information">
+      <div class="contact-wrap">
+
+        <div class="reveal">
+          <div class="sec-label">Contact</div>
+          <h2 class="contact-hed">
+            Let's build<br>
+            <em>resilient defence.</em>
+          </h2>
+          <p class="contact-para">
+            Available for enterprise security engineering projects, Microsoft Sentinel deployments,
+            SOAR automation, and Agentic AI initiatives — globally.
+          </p>
+          <div class="contact-avail">
+            <span class="status-dot"></span>
+            Available for global projects
+          </div>
+        </div>
+
+        <div class="contact-rows reveal">
+          <a href="mailto:jissboban@gmail.com" class="contact-row" id="contact-email">
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-val">jissboban@gmail.com</span>
+            <span class="contact-row-arrow">↗</span>
+          </a>
+          <a href="tel:+918921637620" class="contact-row" id="contact-phone">
+            <span class="contact-row-label">Phone / WA</span>
+            <span class="contact-row-val">+91 8921637620</span>
+            <span class="contact-row-arrow">↗</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" class="contact-row" id="contact-linkedin">
+            <span class="contact-row-label">LinkedIn</span>
+            <span class="contact-row-val">linkedin.com/in/jissboban07</span>
+            <span class="contact-row-arrow">↗</span>
+          </a>
+          <div class="contact-row" id="contact-location" style="cursor:default;">
+            <span class="contact-row-label">Location</span>
+            <span class="contact-row-val">Coimbatore, TN &amp; Ernakulam, KL, India</span>
+            <span class="contact-row-arrow" style="opacity:0;">↗</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <div class="footer-ms-logo" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <span class="footer-copy">© 2025–2026 Jiss Boban · Associate Security Engineer</span>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Er. Jiss Boban. All rights reserved.</p>
-      <p style="font-size: 0.78rem; color: var(--text-subtle); margin-top: 6px;">
-        Associate Security Engineer · Microsoft Transformation Engineer · +91 8921637620 · jissboban@gmail.com
-      </p>
-      <div style="margin-top: 14px;">
-        <button class="btn-lock-terminal" id="btn-lock-terminal" title="Lock Terminal and Test Security Clearance Gateway">
-          🔒 Lock Terminal (Re-test Gateway)
-        </button>
-      </div>
+    <div class="footer-right">
+      <span class="footer-clock" id="footer-clock" aria-live="polite">IST —:—:—</span>
     </div>
   </footer>
 
-  <script src="assets/js/network-canvas.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
