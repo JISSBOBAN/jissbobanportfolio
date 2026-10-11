@@ -3,715 +3,943 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jiss Boban — Security Engineer &amp; Microsoft Transformation Engineer</title>
-  <meta name="description" content="Jiss Boban — Associate Security Engineer at Paramount Computer Systems. Microsoft Sentinel SIEM, Azure Logic Apps SOAR, Security Copilot, Agentic AI and KQL Detection Engineering." />
+  <title>Jiss Boban — Security Engineer & Microsoft Transformation Engineer</title>
+  <meta name="description" content="Associate Security Engineer at Paramount Computer Systems. Microsoft Sentinel SIEM, Azure Logic Apps SOAR, Security Copilot, Agentic AI." />
   <meta name="author" content="Jiss Boban" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jiss Boban — Security Engineer" />
-  <meta property="og:description" content="Associate Security Engineer architecting Microsoft Sentinel SIEM, SOAR Automation, and Agentic AI for enterprise infrastructure." />
   <meta property="og:image" content="assets/images/jiss-hero-ms.jpg" />
-  <meta name="theme-color" content="#060b12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow-x: hidden; }
+
+    :root {
+      --c-bg:      #0a0a0a;
+      --c-text:    #ffffff;
+      --c-muted:   rgba(255,255,255,0.45);
+      --c-dim:     rgba(255,255,255,0.22);
+      --c-border:  rgba(255,255,255,0.12);
+      --c-blue:    #0078D4;
+      --c-nav-h:   38px;
+      --c-bar-h:   34px;
+      --font:      'Inter', -apple-system, sans-serif;
+      --mono:      'JetBrains Mono', monospace;
+    }
+
+    body {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── CUSTOM CURSOR ── */
+    #cur-dot {
+      position: fixed; width: 6px; height: 6px; border-radius: 50%;
+      background: #fff; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%); transition: opacity .3s;
+    }
+    #cur-ring {
+      position: fixed; width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.4); pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .25s, height .25s, border-color .25s;
+    }
+    #cur-ring.expand { width: 48px; height: 48px; border-color: rgba(255,255,255,.7); }
+
+    /* ── HERO — FULL VIEWPORT ── */
+    #hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 580px;
+      overflow: hidden;
+    }
+
+    /* BG Image */
+    #hero-bg {
+      position: absolute; inset: 0;
+      background: url('assets/images/jiss-hero-ms.jpg') center 20% / cover no-repeat;
+      transform: scale(1.04);
+      animation: hero-zoom 10s ease forwards;
+    }
+    @keyframes hero-zoom { to { transform: scale(1); } }
+
+    /* Dark gradient overlay — heavier at top and bottom for text legibility */
+    #hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(10,10,10,.82) 0%,
+          rgba(10,10,10,.0) 30%,
+          rgba(10,10,10,.0) 55%,
+          rgba(10,10,10,.92) 100%
+        ),
+        linear-gradient(to right,
+          rgba(10,10,10,.4) 0%,
+          transparent 30%,
+          transparent 65%,
+          rgba(10,10,10,.3) 100%
+        );
+    }
+
+    /* ── TOP NAV BAR (exact vshslv) ── */
+    #topnav {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: var(--c-nav-h);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--c-border);
+      background: rgba(10,10,10,.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 50;
+      opacity: 0;
+      animation: fade-in .6s ease .4s forwards;
+    }
+
+    .nav-cell {
+      display: flex; align-items: center;
+      padding: 0 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      color: var(--c-text);
+      border-right: 1px solid var(--c-border);
+      transition: background .2s;
+    }
+    .nav-cell:last-child { border-right: none; }
+    .nav-cell:hover { background: rgba(255,255,255,.05); }
+    .nav-cell.active { background: rgba(255,255,255,.08); }
+
+    /* Microsoft logo in name cell */
+    .ms-logo {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      width: 14px; height: 14px; margin-right: 9px; flex-shrink: 0;
+    }
+    .ms-logo span { border-radius: 1px; display: block; }
+    .ms-logo span:nth-child(1) { background: #F25022; }
+    .ms-logo span:nth-child(2) { background: #7FBA00; }
+    .ms-logo span:nth-child(3) { background: #00A4EF; }
+    .ms-logo span:nth-child(4) { background: #FFB900; }
+
+    /* ── LEFT VERTICAL TAB (vshslv "Honors" side) ── */
+    #side-tab {
+      position: absolute;
+      left: 0; bottom: var(--c-bar-h);
+      width: 30px;
+      display: flex; flex-direction: column; align-items: center;
+      z-index: 20;
+      opacity: 0;
+      animation: fade-in .6s ease 1.8s forwards;
+    }
+
+    .side-logo {
+      width: 30px; height: 30px;
+      background: rgba(255,255,255,.92);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: #000;
+      border-right: 1px solid var(--c-border);
+      flex-shrink: 0;
+    }
+
+    .side-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      padding: 14px 0;
+      border-right: 1px solid var(--c-border);
+      background: rgba(10,10,10,.5);
+      flex: 1;
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .side-label:hover { color: #fff; }
+
+    /* ── BOTTOM CONTENT AREA ── */
+    #hero-bottom {
+      position: absolute;
+      bottom: var(--c-bar-h);
+      left: 30px; right: 0;
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr 1fr;
+      gap: 0;
+      opacity: 0;
+      animation: fade-up .8s ease 1.0s forwards;
+    }
+
+    .bottom-col {
+      padding: 20px 24px 22px;
+      border-top: 1px solid var(--c-border);
+      border-right: 1px solid var(--c-border);
+    }
+    .bottom-col:last-child { border-right: none; }
+
+    .col-label {
+      font-size: 9.5px;
+      font-family: var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-dim);
+      margin-bottom: 10px;
+    }
+
+    .col-item {
+      display: block;
+      font-size: 12px;
+      color: var(--c-text);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color .2s;
+      cursor: default;
+    }
+    .col-item:hover { color: rgba(255,255,255,.6); }
+    .col-item.link { cursor: pointer; }
+
+    /* Role block (first col, no label) */
+    .role-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .role-title {
+      font-size: 11px;
+      color: var(--c-muted);
+      line-height: 1.55;
+    }
+
+    /* ── BOTTOM STATUS BAR ── */
+    #statusbar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: var(--c-bar-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px 0 30px;
+      border-top: 1px solid var(--c-border);
+      background: rgba(10,10,10,.7);
+      backdrop-filter: blur(10px);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--c-muted);
+      letter-spacing: .06em;
+      z-index: 30;
+      opacity: 0;
+      animation: fade-in .6s ease 2s forwards;
+    }
+
+    .bar-left   { display: flex; align-items: center; gap: 16px; }
+    .bar-center { text-align: center; flex: 1; }
+    .bar-right  { display: flex; align-items: center; gap: 16px; }
+
+    .bar-sep { color: var(--c-border); }
+
+    .bar-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #4ade80; display: inline-block;
+      animation: pulse-g 2s ease-in-out infinite;
+    }
+    @keyframes pulse-g {
+      0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(74,222,128,.5); }
+      50%      { opacity:.6; box-shadow:0 0 0 4px rgba(74,222,128,0); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+    @keyframes fade-up {
+      from { opacity:0; transform:translateY(14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── SECTIONS BELOW HERO ── */
+    .page-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 88px 48px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .page-section:last-child { border-bottom: none; }
+
+    /* Section header */
+    .sec-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--c-blue);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-eyebrow::before {
+      content: ''; width: 20px; height: 1px; background: var(--c-blue);
+    }
+
+    .sec-title {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+    .sec-title em { font-style: italic; font-weight: 300; color: rgba(255,255,255,.5); }
+
+    /* ── ABOUT GRID ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-img-wrap {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .about-img-wrap img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top center;
+      display: block;
+      filter: saturate(.9);
+      transition: filter .4s;
+    }
+    .about-img-wrap:hover img { filter: saturate(1.15); }
+
+    .about-badge {
+      position: absolute; bottom: 14px; left: 12px; right: 12px;
+      background: rgba(10,10,10,.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,120,212,.3);
+      border-radius: 5px;
+      padding: 10px 13px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .badge-name  { font-size: 12px; font-weight: 600; color: #fff; }
+    .badge-co    { font-size: 10.5px; color: rgba(255,255,255,.5); margin-top: 2px; }
+    .badge-live  {
+      font-family: var(--mono); font-size: 9px; letter-spacing: .08em;
+      color: #4ade80; display: flex; align-items: center; gap: 5px;
+    }
+
+    .about-copy h2 {
+      font-size: 22px; font-weight: 700; letter-spacing: -.018em;
+      line-height: 1.3; color: #fff; margin-bottom: 16px;
+    }
+    .about-copy p {
+      font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-copy p strong { color: #fff; font-weight: 600; }
+
+    .stat-row {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 14px;
+      margin-top: 36px;
+    }
+    .stat-item {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 6px; padding: 16px;
+      background: rgba(255,255,255,.03);
+      transition: border-color .25s, background .25s;
+    }
+    .stat-item:hover {
+      border-color: rgba(0,120,212,.4);
+      background: rgba(0,120,212,.06);
+    }
+    .stat-num {
+      font-size: 24px; font-weight: 800; letter-spacing: -.03em;
+      color: #fff; margin-bottom: 4px;
+    }
+    .stat-num span { color: var(--c-blue); }
+    .stat-lbl { font-size: 11px; color: rgba(255,255,255,.38); line-height: 1.4; }
+
+    /* ── EXPERIENCE ROWS ── */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 36px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: opacity .2s;
+    }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child  { border-bottom: none; }
+    .exp-item:hover { opacity: .75; }
+
+    .exp-period {
+      font-family: var(--mono); font-size: 10.5px;
+      color: rgba(255,255,255,.35); padding-top: 4px;
+    }
+    .exp-badge {
+      display: inline-block; margin-top: 6px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: .06em;
+      text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+      border: 1px solid rgba(0,120,212,.35); color: #50E6FF;
+    }
+    .exp-org  { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .exp-role { font-size: 12px; color: #50E6FF; margin-bottom: 10px; font-weight: 500; }
+    .exp-desc { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.65; margin-bottom: 12px; }
+    .exp-ul   { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .exp-ul li {
+      font-size: 12px; color: rgba(255,255,255,.45); padding-left: 16px;
+      position: relative; line-height: 1.5;
+    }
+    .exp-ul li::before { content:'›'; position:absolute; left:0; color:var(--c-blue); font-size:13px; }
+
+    /* ── PROJECT ROWS ── */
+    .proj-row {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      gap: 0 24px; align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: opacity .2s;
+      position: relative;
+    }
+    .proj-row::before {
+      content:''; position:absolute; inset: 0 -20px;
+      border-radius: 6px; background: rgba(255,255,255,.025);
+      opacity:0; transition: opacity .2s;
+    }
+    .proj-row:hover::before { opacity:1; }
+    .proj-row:first-child { padding-top: 0; }
+    .proj-row:last-child  { border-bottom: none; }
+
+    .proj-num { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.25); padding-top:4px; }
+    .proj-title   { font-size: 14.5px; font-weight: 700; color: #fff; margin-bottom: 3px; letter-spacing: -.01em; }
+    .proj-sub     { font-size: 11.5px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
+    .proj-desc    { font-size: 12.5px; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 520px; margin-bottom: 10px; }
+    .proj-tags    { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-tag     {
+      font-family: var(--mono); font-size: 9.5px; padding: 2px 8px; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.38);
+      transition: border-color .2s, color .2s;
+    }
+    .proj-row:hover .proj-tag { border-color: rgba(0,120,212,.35); color: rgba(255,255,255,.6); }
+    .proj-year  { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.3); text-align:right; margin-bottom:6px; }
+    .proj-award {
+      font-family: var(--mono); font-size: 9px; letter-spacing: .05em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 3px; border: 1px solid rgba(0,120,212,.35);
+      color: #50E6FF; white-space: nowrap; display: block; text-align: right;
+    }
+
+    /* ── CREDENTIALS ── */
+    .cred-row {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 8px 28px; align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: opacity .2s;
+    }
+    .cred-row:first-child { padding-top: 0; }
+    .cred-row:last-child  { border-bottom: none; }
+    .cred-row:hover { opacity: .65; }
+    .cred-name  { font-size: 13.5px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+    .cred-org   { font-family: var(--mono); font-size: 10.5px; color: rgba(255,255,255,.32); }
+    .cred-date  { font-family: var(--mono); font-size: 10.5px; color: rgba(255,255,255,.3); display:block; margin-bottom:4px; text-align:right; }
+    .cred-link  { font-size: 11px; font-weight: 600; color: var(--c-blue); transition: color .2s; }
+    .cred-link:hover { color: #50E6FF; }
+
+    /* ── HONORS CARDS ── */
+    .honors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .honor-card {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: 24px;
+      background: rgba(255,255,255,.025);
+      transition: border-color .3s, background .3s, transform .3s;
+    }
+    .honor-card:hover {
+      border-color: rgba(0,120,212,.4);
+      background: rgba(0,120,212,.07);
+      transform: translateY(-4px);
+    }
+    .honor-icon  { font-size: 20px; margin-bottom: 12px; }
+    .honor-name  { font-size: 13.5px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .honor-desc  { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; margin-bottom: 12px; }
+    .honor-giver { font-family: var(--mono); font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--c-blue); }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .contact-hed  {
+      font-size: clamp(28px,4vw,46px); font-weight: 800;
+      letter-spacing: -.03em; line-height: 1.08; color: #fff; margin-bottom: 18px;
+    }
+    .contact-hed em { font-style: italic; font-weight: 300; color: #50E6FF; }
+    .contact-para { font-size: 13.5px; color: rgba(255,255,255,.45); line-height: 1.7; margin-bottom: 28px; }
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+      color: #4ade80; border: 1px solid rgba(74,222,128,.25); border-radius: 4px; padding: 6px 12px;
+    }
+
+    .contact-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+      text-decoration: none; color: #fff;
+      transition: opacity .2s; gap: 12px;
+    }
+    .contact-item:first-child { border-top: 1px solid rgba(255,255,255,.07); }
+    .contact-item:hover { opacity: .5; }
+    .contact-lbl  { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.32); width: 110px; flex-shrink: 0; }
+    .contact-val  { font-size: 13.5px; font-weight: 500; flex: 1; }
+    .contact-arr  { font-size: 14px; color: rgba(255,255,255,.3); transition: transform .2s, color .2s; }
+    .contact-item:hover .contact-arr { transform: translate(4px,-4px); color: #50E6FF; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.07);
+      background: #050508;
+      padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .footer-ms   { width: 12px; height: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .footer-ms span { border-radius: 1px; display: block; opacity: .6; }
+    .footer-ms span:nth-child(1) { background: #F25022; }
+    .footer-ms span:nth-child(2) { background: #7FBA00; }
+    .footer-ms span:nth-child(3) { background: #00A4EF; }
+    .footer-ms span:nth-child(4) { background: #FFB900; }
+    .footer-copy { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.25); }
+    #footer-clock { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.25); }
+
+    /* ── REVEAL ON SCROLL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: repeat(2,1fr); }
+      .honors-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; }
+      .proj-row { grid-template-columns: 32px 1fr; }
+      .proj-meta { grid-column: 2; }
+      #hero-bottom { grid-template-columns: 150px 1fr; }
+      .bottom-col:nth-child(3), .bottom-col:nth-child(4) { display: none; }
+      .page-section { padding: 60px 24px; }
+    }
+    @media (max-width: 600px) {
+      #hero-bottom { grid-template-columns: 1fr; }
+      .bottom-col:nth-child(2) { display: none; }
+      footer { padding: 14px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ================================================================
-       CUSTOM CURSOR
-       ================================================================ -->
-  <div class="cursor-dot"  id="cursor-dot"  aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+  <!-- CURSOR -->
+  <div id="cur-dot"  aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"></div>
 
-  <!-- ================================================================
-       LOADER
-       ================================================================ -->
-  <div id="loader" role="status" aria-label="Loading portfolio">
-    <div class="loader-logo">
-      <div class="loader-logo-square">
-        <span></span><span></span><span></span><span></span>
+  <!-- ══════════════════════════════════════════════════════
+       HERO — EXACT VSHSLV.COM LAYOUT
+       ══════════════════════════════════════════════════════ -->
+  <section id="hero">
+
+    <!-- BG -->
+    <div id="hero-bg"></div>
+    <div id="hero-overlay"></div>
+
+    <!-- TOP NAV — 3 equal columns with borders (exact vshslv) -->
+    <nav id="topnav" aria-label="Main navigation">
+      <div class="nav-cell">
+        <div class="ms-logo" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        Jiss Boban
       </div>
-      Jiss Boban
-    </div>
-    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-    <div class="loader-text">INITIALIZING SECURITY DOSSIER...</div>
-  </div>
-
-  <!-- ================================================================
-       TOP NAVIGATION (vshslv-style bar)
-       ================================================================ -->
-  <header class="topnav" id="topnav" role="banner">
-    <div class="topnav-name">
-      <div class="ms-logo" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-      </div>
-      Jiss Boban
-    </div>
-
-    <nav class="topnav-center" aria-label="Main navigation">
-      <a href="#about"       class="topnav-link active" id="tnav-about">About</a>
-      <a href="#experience"  class="topnav-link"        id="tnav-experience">Experience</a>
-      <a href="#projects"    class="topnav-link"        id="tnav-projects">Portfolio</a>
-      <a href="#credentials" class="topnav-link"        id="tnav-credentials">Credentials</a>
-      <a href="#contact"     class="topnav-link"        id="tnav-contact">Contact</a>
+      <a href="#projects"    class="nav-cell" id="nav-portfolio">Portfolio</a>
+      <a href="#about"       class="nav-cell" id="nav-profile">Profile</a>
     </nav>
 
-    <div class="topnav-right">
-      <div class="topnav-status">
-        <span class="status-dot"></span>
-        <span id="live-clock">IST —:—:—</span>
-      </div>
-      <div class="topnav-status">
-        <span>Coimbatore, India</span>
-      </div>
+    <!-- LEFT SIDE TAB — "J." logo + "Honors" vertical -->
+    <div id="side-tab" aria-hidden="true">
+      <div class="side-logo">J.</div>
+      <a href="#honors" class="side-label">Honors</a>
     </div>
-  </header>
 
-  <!-- ================================================================
-       HERO — FULL VIEWPORT CINEMATIC
-       ================================================================ -->
-  <section class="hero" id="hero" aria-label="Hero introduction">
+    <!-- BOTTOM CONTENT — role + 3 columns (exact vshslv) -->
+    <div id="hero-bottom">
 
-    <!-- Side tab -->
-    <div class="hero-side-tab" aria-hidden="true">Selected Works</div>
-
-    <!-- BG image -->
-    <div class="hero-bg" role="img" aria-label="Jiss Boban — Security Engineer in server room"></div>
-
-    <!-- Atmospheric overlays -->
-    <div class="hero-overlay-base" aria-hidden="true"></div>
-    <div class="hero-scanlines" aria-hidden="true"></div>
-    <div class="hero-noise" aria-hidden="true"></div>
-
-    <!-- Content overlay at bottom -->
-    <div class="hero-content">
-
-      <!-- Col 1: Role -->
-      <div class="hero-role-block hero-col">
-        <div class="hero-role-title">
-          <strong>Jiss Boban</strong>
+      <!-- Col 1: Name & Role (bottom-left, like "Senior Designer / Creative Developer") -->
+      <div class="bottom-col" style="border-left:1px solid var(--c-border);">
+        <div class="role-name">Jiss Boban</div>
+        <div class="role-title">
           Associate Security Engineer<br>
           Microsoft Transformation Engineer
         </div>
       </div>
 
-      <!-- Col 2: Detection -->
-      <div class="hero-col">
-        <div class="hero-col-label">Detection &amp; SIEM</div>
-        <div class="hero-col-items">
-          <span class="hero-col-item">Microsoft Sentinel</span>
-          <span class="hero-col-item">KQL Analytics</span>
-          <span class="hero-col-item">Defender XDR</span>
-          <span class="hero-col-item">MITRE ATT&amp;CK</span>
-          <span class="hero-col-item">Azure Monitor</span>
-        </div>
+      <!-- Col 2: Detection (like "Design") -->
+      <div class="bottom-col">
+        <div class="col-label">Detection</div>
+        <span class="col-item">Microsoft Sentinel</span>
+        <span class="col-item">KQL Analytics</span>
+        <span class="col-item">Defender XDR</span>
+        <span class="col-item">MITRE ATT&amp;CK</span>
+        <span class="col-item">Azure Monitor</span>
       </div>
 
-      <!-- Col 3: Automation -->
-      <div class="hero-col">
-        <div class="hero-col-label">Automation &amp; AI</div>
-        <div class="hero-col-items">
-          <span class="hero-col-item">Azure Logic Apps</span>
-          <span class="hero-col-item">SOAR Playbooks</span>
-          <span class="hero-col-item">Security Copilot</span>
-          <span class="hero-col-item">Agentic AI (MCP)</span>
-          <span class="hero-col-item">Copilot Studio</span>
-        </div>
+      <!-- Col 3: Automation (like "Engineering") -->
+      <div class="bottom-col">
+        <div class="col-label">Automation &amp; AI</div>
+        <span class="col-item">Azure Logic Apps</span>
+        <span class="col-item">SOAR Playbooks</span>
+        <span class="col-item">Security Copilot</span>
+        <span class="col-item">Agentic AI (MCP)</span>
+        <span class="col-item">Copilot Studio</span>
       </div>
 
-      <!-- Col 4: Certifications -->
-      <div class="hero-col">
-        <div class="hero-col-label">Certified</div>
-        <div class="hero-col-items">
-          <span class="hero-col-item">SC-200 Security Analyst</span>
-          <span class="hero-col-item">AZ-900 Azure Fundamentals</span>
-          <span class="hero-col-item">SC-900 Security</span>
-          <span class="hero-col-item">Frontier Transformation Eng</span>
-          <span class="hero-col-item">Agentic AI Architect</span>
-        </div>
+      <!-- Col 4: Certified (like "Featured >") -->
+      <div class="bottom-col">
+        <div class="col-label">Certified ›</div>
+        <a href="#credentials" class="col-item link">SC-200 Security Analyst</a>
+        <a href="#credentials" class="col-item link">AZ-900 Azure</a>
+        <a href="#credentials" class="col-item link">Frontier Transform. Eng</a>
+        <a href="#credentials" class="col-item link">Agentic AI Architect</a>
+        <a href="#credentials" class="col-item link">Anthropic MCP</a>
       </div>
 
     </div>
 
-    <!-- Bottom status bar -->
-    <div class="hero-statusbar" aria-hidden="true">
-      <div class="statusbar-item">
+    <!-- BOTTOM STATUS BAR (exact vshslv — coordinates / tagline / platform / time) -->
+    <div id="statusbar" aria-hidden="true">
+      <div class="bar-left">
         <span>PARAMOUNT COMPUTER SYSTEMS</span>
-        <span>·</span>
+        <span class="bar-sep">·</span>
         <span>ASSOCIATE SECURITY ENGINEER</span>
       </div>
-      <div class="statusbar-item">
-        <span id="hero-clock">—</span>
-        <span>·</span>
-        <span>COIMBATORE, TN · ERNAKULAM, KL, INDIA</span>
+      <div class="bar-center">
+        1 year. Still defending.
       </div>
-      <div class="statusbar-item">
-        <span class="status-dot"></span>
-        <span>DEFENSE ACTIVE</span>
-        <span>·</span>
-        <span>AVAILABLE FOR GLOBAL PROJECTS</span>
+      <div class="bar-right">
+        <span>Microsoft Azure</span>
+        <span class="bar-sep">·</span>
+        <span class="bar-dot"></span>
+        <span id="status-clock">—</span>
       </div>
     </div>
 
   </section>
 
-  <!-- ================================================================
+  <!-- ══════════════════════════════════════════════════════
        MAIN CONTENT
-       ================================================================ -->
-  <main class="main-content" id="main">
+       ══════════════════════════════════════════════════════ -->
+  <main style="background:#08090d;">
 
-    <!-- ── ABOUT ── -->
-    <section class="section" id="about" aria-label="About Jiss Boban">
-      <div class="sec-header">
-        <div>
-          <div class="sec-label">Profile</div>
-          <h1 class="sec-title">Security Engineer &amp;<br><em>Microsoft Architect.</em></h1>
-        </div>
-        <p class="sec-subtitle">
-          Designing and deploying enterprise cyber-defence at the intersection of
-          Microsoft Sentinel, AI automation, and cloud security — for government, aviation,
-          telecom, and healthcare clients across India and the GCC.
-        </p>
-      </div>
+    <!-- ABOUT -->
+    <section class="page-section" id="about" aria-label="About">
+      <div class="sec-eyebrow">Profile</div>
+      <h1 class="sec-title">Security Engineer &amp;<br><em>Microsoft Architect.</em></h1>
 
       <div class="about-grid">
-        <div class="about-portrait reveal">
-          <img
-            src="assets/images/jiss-portrait-ai.jpg"
-            alt="Jiss Boban — Associate Security Engineer"
-            loading="eager"
-          />
-          <div class="about-portrait-badge">
+        <div class="about-img-wrap reveal">
+          <img src="assets/images/image.png" alt="Jiss Boban" />
+          <div class="about-badge">
             <div>
               <div class="badge-name">Jiss Boban</div>
-              <div class="badge-role">Paramount Computer Systems</div>
+              <div class="badge-co">Paramount Computer Systems</div>
             </div>
-            <div class="badge-status">
-              <span class="status-dot" style="width:5px;height:5px;"></span>
-              Active
-            </div>
+            <div class="badge-live"><span class="bar-dot"></span> Active</div>
           </div>
         </div>
 
         <div class="about-copy reveal">
-          <h2 class="about-headline">
-            Engineering cyber-defence<br>at enterprise scale.
-          </h2>
-          <p class="about-para">
-            I'm <strong>Jiss Boban</strong> — an Associate Security Engineer and certified
+          <h2>Engineering cyber-defence<br>at enterprise scale.</h2>
+          <p>
+            I'm <strong>Jiss Boban</strong> — Associate Security Engineer and certified
             <strong>Microsoft Frontier Transformation Engineer</strong>. At Paramount Computer Systems,
-            I architect end-to-end security stacks: from <strong>Microsoft Sentinel SIEM</strong>
-            workspace design and custom KQL detection rules to <strong>Azure Logic Apps SOAR</strong>
+            I architect complete security stacks: from <strong>Microsoft Sentinel SIEM</strong>
+            workspaces and KQL detection rules to <strong>Azure Logic Apps SOAR</strong>
             automation and <strong>Security Copilot Agentic AI</strong> frameworks.
           </p>
-          <p class="about-para">
+          <p>
             Proven delivery across <strong>Dubai &amp; Kuwait government entities</strong>,
-            commercial airlines, telecommunications providers, and healthcare systems.
-            <strong>SC-200 Security Operations Analyst</strong> and
-            <strong>AZ-900 Azure Fundamentals</strong> certified, with a B.Tech in
-            Computer Science &amp; Engineering (CGPA 8.65) from AISAT, Kerala.
+            commercial airlines, telecoms, and healthcare providers. <strong>SC-200</strong> and
+            <strong>AZ-900</strong> certified. B.Tech CSE — CGPA 8.65 — AISAT, Kerala.
           </p>
-
-          <div class="about-stats">
-            <div class="stat-box reveal">
+          <div class="stat-row">
+            <div class="stat-item reveal">
               <div class="stat-num">6<span>+</span></div>
-              <div class="stat-label">Enterprise Projects Delivered</div>
+              <div class="stat-lbl">Enterprise Projects</div>
             </div>
-            <div class="stat-box reveal">
+            <div class="stat-item reveal">
               <div class="stat-num">60<span>%</span></div>
-              <div class="stat-label">Log Ingestion Cost Reduction</div>
+              <div class="stat-lbl">Log Cost Reduction</div>
             </div>
-            <div class="stat-box reveal">
-              <div class="stat-num">&lt;1<span>min</span></div>
-              <div class="stat-label">SOAR Auto-Containment MTTR</div>
+            <div class="stat-item reveal">
+              <div class="stat-num">&lt;1<span>m</span></div>
+              <div class="stat-lbl">Auto-Containment MTTR</div>
             </div>
-            <div class="stat-box reveal">
+            <div class="stat-item reveal">
               <div class="stat-num">11<span>+</span></div>
-              <div class="stat-label">Microsoft &amp; Anthropic Certifications</div>
+              <div class="stat-lbl">Certifications</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── EXPERIENCE ── -->
-    <section class="section" id="experience" aria-label="Work experience">
-      <div class="sec-header reveal">
+    <!-- EXPERIENCE -->
+    <section class="page-section" id="experience" aria-label="Experience">
+      <div class="sec-eyebrow">Experience</div>
+      <h2 class="sec-title">Work &amp; <em>Education.</em></h2>
+
+      <div class="exp-item reveal">
         <div>
-          <div class="sec-label">Experience</div>
-          <h2 class="sec-title">Work &amp; <em>Education.</em></h2>
+          <div class="exp-period">Nov 2025 — Present</div>
+          <span class="exp-badge">Full-Time</span>
         </div>
-        <p class="sec-subtitle">
-          Building and deploying Microsoft security stacks at enterprise scale since 2025.
-        </p>
-      </div>
-
-      <div class="exp-timeline">
-
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-period">Nov 2025 — Present</div>
-            <span class="exp-badge">Full-Time</span>
-          </div>
-          <div class="exp-body">
-            <div class="exp-org">Paramount Computer Systems</div>
-            <div class="exp-role-title">Associate Security Engineer</div>
-            <p class="exp-desc-text">
-              Leading Microsoft Sentinel SIEM architecture and monitoring deployment for enterprise clients
-              across Dubai, Kuwait, and India — spanning government entities, commercial airlines,
-              telecom, and healthcare providers.
-            </p>
-            <ul class="exp-bullets-ms">
-              <li>Architect Sentinel workspaces, custom KQL Workbooks, Scheduled &amp; NRT analytic rules</li>
-              <li>Engineer REST API ingestion pipelines via Azure Logs Ingestion API (DCE) and Linux Logstash forwarders with custom grok filtering</li>
-              <li>Build Azure Logic Apps SOAR playbooks for boundary IP isolation, Entra ID session revocation, and Teams Adaptive Cards</li>
-              <li>Configure Azure Monitor Agent (AMA) + DCR XPath filtering — cutting client ingestion costs by &gt;60%</li>
-              <li>Deploy Microsoft Security Copilot forensic promptbooks and Copilot Studio autonomous skills with Anthropic MCP tools</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-period">Jul 2025 — Oct 2025</div>
-            <span class="exp-badge">Internship</span>
-          </div>
-          <div class="exp-body">
-            <div class="exp-org">Paramount Computer Systems</div>
-            <div class="exp-role-title">Cloud Security Intern</div>
-            <p class="exp-desc-text">
-              Monitored multi-tenant security telemetry and analysed incidents across Microsoft 365,
-              Entra ID, and Azure. Conducted connector health verification and security posture audits.
-            </p>
-          </div>
-        </div>
-
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-period">Jun 2021 — Jun 2025</div>
-            <span class="exp-badge">Education</span>
-          </div>
-          <div class="exp-body">
-            <div class="exp-org">Albertian Institute of Science &amp; Technology</div>
-            <div class="exp-role-title">B.Tech — Computer Science &amp; Engineering · CGPA 8.65</div>
-            <p class="exp-desc-text">
-              Minor in Electronics. Principal's Club Member for maintaining CGPA 8.0+ across four years.
-              Affiliated with APJ Abdul Kalam Technological University (KTU), Ernakulam, Kerala.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── SELECTED WORK ── -->
-    <section class="section" id="projects" aria-label="Selected work and projects">
-      <div class="sec-header reveal">
         <div>
-          <div class="sec-label">Portfolio</div>
-          <h2 class="sec-title">Selected <em>Work.</em></h2>
+          <div class="exp-org">Paramount Computer Systems</div>
+          <div class="exp-role">Associate Security Engineer</div>
+          <p class="exp-desc">Leading Microsoft Sentinel SIEM architecture and monitoring for enterprise clients across Dubai, Kuwait, and India — government, aviation, telecom, and healthcare.</p>
+          <ul class="exp-ul">
+            <li>Sentinel workspaces, custom KQL Workbooks, Scheduled &amp; NRT analytic rules</li>
+            <li>Azure Logs Ingestion API (DCE) + Linux Logstash pipelines with grok filtering</li>
+            <li>Azure Logic Apps SOAR — boundary IP isolation, Entra ID revocation, Teams Cards</li>
+            <li>AMA + DCR XPath filtering — cutting ingestion costs by &gt;60%</li>
+            <li>Security Copilot forensic promptbooks and Copilot Studio with Anthropic MCP</li>
+          </ul>
         </div>
-        <p class="sec-subtitle">
-          Real-world enterprise security systems — from SIEM telemetry pipelines and SOAR automation
-          to Agentic AI and IoT robotics.
-        </p>
       </div>
 
-      <div class="project-rows">
-
-        <div class="project-item reveal">
-          <div class="proj-num">01</div>
-          <div class="proj-body">
-            <div class="proj-title">Golden Eye — The Rescue Drone</div>
-            <div class="proj-subtitle">Edge AI Computer Vision · Autonomous Disaster Reconnaissance</div>
-            <p class="proj-desc">
-              Autonomous emergency response drone officially selected by APJ Abdul Kalam Technological University
-              to represent Kerala at the State Government's 4th Anniversary ENTE KERALAM Expo.
-              Real-time YOLOv8 human detection, ESP32-CAM wireless video feed, and servo-actuated supply delivery.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">YOLOv8 AI</span>
-              <span class="proj-tag">ESP32-CAM</span>
-              <span class="proj-tag">IoT Robotics</span>
-              <span class="proj-tag">Computer Vision</span>
-              <span class="proj-tag">Edge Inference</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2025</div>
-            <span class="proj-award">State Govt Selected</span>
-          </div>
-        </div>
-
-        <div class="project-item reveal">
-          <div class="proj-num">02</div>
-          <div class="proj-body">
-            <div class="proj-title">Sentinel Interactive Workbooks</div>
-            <div class="proj-subtitle">Multi-Cloud Threat Intelligence · SOC KPIs · Executive Dashboards</div>
-            <p class="proj-desc">
-              Visual SOC telemetry dashboards mapping global multi-cloud attack surfaces, authentication anomalies,
-              and MITRE ATT&amp;CK detection coverage in real time. Parameterised KQL metrics cross-referencing Defender XDR,
-              with granular dwell-time, MTTA, and MTTR calculation for government &amp; airline clients.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">Microsoft Sentinel</span>
-              <span class="proj-tag">KQL</span>
-              <span class="proj-tag">MITRE ATT&amp;CK</span>
-              <span class="proj-tag">Defender XDR</span>
-              <span class="proj-tag">SOC KPIs</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2026</div>
-            <span class="proj-award">Enterprise SIEM</span>
-          </div>
-        </div>
-
-        <div class="project-item reveal">
-          <div class="proj-num">03</div>
-          <div class="proj-body">
-            <div class="proj-title">High-Throughput API Ingestion &amp; Logstash</div>
-            <div class="proj-subtitle">Azure Monitor Logs Ingestion API (DCE) · Linux Forwarders · ASIM</div>
-            <p class="proj-desc">
-              Enterprise log ingestion pipelines routing multi-terabyte unformatted streams into Azure Log Analytics
-              with custom grok filtering, ASIM normalisation, and DCR XPath transformation filters —
-              achieving sub-3-second end-to-end latency and &gt;60% billable cost reduction.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">Azure DCE</span>
-              <span class="proj-tag">Linux Logstash</span>
-              <span class="proj-tag">Grok Filtering</span>
-              <span class="proj-tag">ASIM</span>
-              <span class="proj-tag">DCR</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2026</div>
-            <span class="proj-award">Sub-3s Latency</span>
-          </div>
-        </div>
-
-        <div class="project-item reveal">
-          <div class="proj-num">04</div>
-          <div class="proj-body">
-            <div class="proj-title">Security Copilot &amp; Agentic AI Triage</div>
-            <div class="proj-subtitle">Copilot Studio · Anthropic MCP · Forensic Promptbooks</div>
-            <p class="proj-desc">
-              Autonomous forensic investigation framework integrating Microsoft Security Copilot, Copilot Studio,
-              and Anthropic Model Context Protocol (MCP) — collapsing analyst fatigue with custom skills executing
-              dynamic KQL lookups, multi-stage attack chain synthesis, and actionable security briefs.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">Security Copilot</span>
-              <span class="proj-tag">Copilot Studio</span>
-              <span class="proj-tag">Anthropic MCP</span>
-              <span class="proj-tag">Claude API</span>
-              <span class="proj-tag">Agentic AI</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2026</div>
-            <span class="proj-award">Agentic AI</span>
-          </div>
-        </div>
-
-        <div class="project-item reveal">
-          <div class="proj-num">05</div>
-          <div class="proj-body">
-            <div class="proj-title">Azure Logic Apps (SOAR) Automated Playbooks</div>
-            <div class="proj-subtitle">Zero-Touch Boundary Containment · Identity Quarantine · Teams Integration</div>
-            <p class="proj-desc">
-              Automated incident remediation playbooks triggered on high-severity Sentinel alerts.
-              Dynamic REST API webhooks push malicious IPs to firewalls, Entra ID sessions are immediately
-              revoked, and Teams Adaptive Cards notify analysts with override options — all in under 60 seconds.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">Azure Logic Apps</span>
-              <span class="proj-tag">SOAR</span>
-              <span class="proj-tag">Auto-Containment</span>
-              <span class="proj-tag">Entra ID</span>
-              <span class="proj-tag">Microsoft Teams</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2026</div>
-            <span class="proj-award">Sub-Minute MTTR</span>
-          </div>
-        </div>
-
-        <div class="project-item reveal">
-          <div class="proj-num">06</div>
-          <div class="proj-body">
-            <div class="proj-title">Sentinel CCF &amp; Custom Analytic Rules</div>
-            <div class="proj-subtitle">Codeless Connector Framework · MITRE KQL Engineering · Noise Suppression</div>
-            <p class="proj-desc">
-              Turnkey data connectors via Microsoft Sentinel Codeless Connector Framework (CCF/CCP),
-              combined with bespoke high-fidelity Scheduled and NRT analytic rules mapped to MITRE ATT&amp;CK tactics.
-              XPath and DCR transformation filters eliminate &gt;60% of billable noise before ingestion.
-            </p>
-            <div class="proj-tags">
-              <span class="proj-tag">Sentinel CCF</span>
-              <span class="proj-tag">Custom Rules</span>
-              <span class="proj-tag">DCR Filtering</span>
-              <span class="proj-tag">KQL</span>
-              <span class="proj-tag">NRT Analytics</span>
-            </div>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-year">2026</div>
-            <span class="proj-award">&gt;60% Cost Saving</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── CREDENTIALS ── -->
-    <section class="section" id="credentials" aria-label="Verified credentials and certifications">
-      <div class="sec-header reveal">
+      <div class="exp-item reveal">
         <div>
-          <div class="sec-label">Credentials</div>
-          <h2 class="sec-title">Certifications &amp; <em>Licenses.</em></h2>
+          <div class="exp-period">Jul 2025 — Oct 2025</div>
+          <span class="exp-badge">Internship</span>
         </div>
-        <p class="sec-subtitle">
-          Verified across Microsoft, Anthropic, NPTEL, and IISc Bangalore.
-        </p>
-      </div>
-
-      <div class="cred-rows">
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Frontier Transformation Engineer</div>
-            <div class="cred-org">Microsoft AI Frontiers · ID: 248072e9-1319-42df-add0-3684a6ba1c24</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Aug 2026</span>
-            <a href="https://www.credly.com/badges/248072e9-1319-42df-add0-3684a6ba1c24/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cred-link">Credly ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Security Operations Analyst Associate (SC-200)</div>
-            <div class="cred-org">Microsoft · ID: CD094410B84FFB5D</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">May 2026</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/CD094410B84FFB5D" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Agentic AI Business Solutions Architect</div>
-            <div class="cred-org">Microsoft · ID: 3B82C5E9CBAA80CC</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Jul 2026</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/3B82C5E9CBAA80CC" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Azure AI Apps and Agents Developer Associate</div>
-            <div class="cred-org">Microsoft · ID: C0331647B47FB79F</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Jul 2026</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/C0331647B47FB79F" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">GitHub Copilot (GH 300)</div>
-            <div class="cred-org">Microsoft · ID: E8B9A47EF5D908E</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Jul 2026</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/E8B9A47EF5D908E" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Introduction to Model Context Protocol (MCP)</div>
-            <div class="cred-org">Anthropic · ID: sk976swhpc2z</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">May 2026</span>
-            <a href="https://verify.skilljar.com/c/sk976swhpc2z" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Building with the Claude API</div>
-            <div class="cred-org">Anthropic · ID: s8mz9m5ds74h</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">May 2026</span>
-            <a href="https://verify.skilljar.com/c/s8mz9m5ds74h" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Azure Fundamentals (AZ-900)</div>
-            <div class="cred-org">Microsoft · ID: 5DA501A873AF0C1</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Oct 2025</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/5DA501A873AF0C1" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Security, Compliance &amp; Identity Fundamentals (SC-900)</div>
-            <div class="cred-org">Microsoft · ID: 595208280845D4D1</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Aug 2025</span>
-            <a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/595208280845D4D1" target="_blank" rel="noopener noreferrer" class="cred-link">Verify ↗</a>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Electronic Systems for Cancer Diagnosis (ELITE Tag)</div>
-            <div class="cred-org">IISc Bangalore / NPTEL · Score: 69%</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">2024</span>
-            <span class="cred-link" style="cursor:default;color:var(--text-3);">Elite Certified</span>
-          </div>
-        </div>
-
-        <div class="cred-item reveal">
-          <div>
-            <div class="cred-name">Fabrication Techniques for MEMs-Based Sensors</div>
-            <div class="cred-org">NPTEL / SWAYAM, Government of India</div>
-          </div>
-          <div class="cred-right">
-            <span class="cred-date">Oct 2024</span>
-            <span class="cred-link" style="cursor:default;color:var(--text-3);">Completed</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── HONORS ── -->
-    <section class="section" id="honors" aria-label="Honors and recognition">
-      <div class="sec-header reveal">
         <div>
-          <div class="sec-label">Recognition</div>
-          <h2 class="sec-title">Honors &amp; <em>Awards.</em></h2>
+          <div class="exp-org">Paramount Computer Systems</div>
+          <div class="exp-role">Cloud Security Intern</div>
+          <p class="exp-desc">Monitored multi-tenant security telemetry, analysed incidents across Microsoft 365, Entra ID and Azure. Connector health verification and posture audits.</p>
         </div>
       </div>
 
-      <div class="honor-grid">
-
-        <div class="honor-card reveal">
-          <div class="honor-icon">🏆</div>
-          <div class="honor-name">PT Thomas MLA Excellence Award</div>
-          <p class="honor-desc">
-            Awarded for outstanding academic achievements in Computer Science &amp; Engineering and Electronics.
-            Presented directly by MLA Uma Thomas, Kerala State Legislature.
-          </p>
-          <div class="honor-giver">Presented by MLA Uma Thomas · Kerala</div>
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Jun 2021 — Jun 2025</div>
+          <span class="exp-badge">Education</span>
         </div>
-
-        <div class="honor-card reveal">
-          <div class="honor-icon">🚁</div>
-          <div class="honor-name">KTU State Selection — ENTE KERALAM</div>
-          <p class="honor-desc">
-            Golden Eye – The Rescue Drone was officially selected by APJ Abdul Kalam Technological University
-            to be showcased at Kerala's 4th Anniversary State Government Expo.
-          </p>
-          <div class="honor-giver">KTU &amp; Kerala State Government</div>
+        <div>
+          <div class="exp-org">Albertian Institute of Science &amp; Technology (AISAT)</div>
+          <div class="exp-role">B.Tech — Computer Science &amp; Engineering · CGPA 8.65</div>
+          <p class="exp-desc">Minor in Electronics. Principal's Club Member (CGPA 8.0+ all 4 years). KTU affiliated, Ernakulam, Kerala.</p>
         </div>
-
-        <div class="honor-card reveal">
-          <div class="honor-icon">🎓</div>
-          <div class="honor-name">AISAT Principal's Club</div>
-          <p class="honor-desc">
-            Continuous academic excellence recognition for maintaining a CGPA above 8.0 (final: 8.65)
-            across all four years of engineering studies.
-          </p>
-          <div class="honor-giver">Albertian Institute of Science &amp; Technology</div>
-        </div>
-
       </div>
     </section>
 
-    <!-- ── CONTACT ── -->
-    <section class="section" id="contact" aria-label="Contact information">
-      <div class="contact-wrap">
+    <!-- PROJECTS -->
+    <section class="page-section" id="projects" aria-label="Portfolio">
+      <div class="sec-eyebrow">Portfolio</div>
+      <h2 class="sec-title">Selected <em>Work.</em></h2>
 
+      <div class="proj-row reveal"><div class="proj-num">01</div>
+        <div>
+          <div class="proj-title">Golden Eye — The Rescue Drone</div>
+          <div class="proj-sub">Edge AI · Autonomous Disaster Reconnaissance</div>
+          <p class="proj-desc">Autonomous drone selected by KTU for Kerala's 4th Anniversary ENTE KERALAM State Expo. YOLOv8 real-time human detection, ESP32-CAM wireless feed, servo supply delivery.</p>
+          <div class="proj-tags"><span class="proj-tag">YOLOv8</span><span class="proj-tag">ESP32-CAM</span><span class="proj-tag">IoT</span><span class="proj-tag">Computer Vision</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2025</div><span class="proj-award">State Govt Selected</span></div>
+      </div>
+
+      <div class="proj-row reveal"><div class="proj-num">02</div>
+        <div>
+          <div class="proj-title">Sentinel Interactive Workbooks</div>
+          <div class="proj-sub">Multi-Cloud Threat Intelligence · SOC KPIs</div>
+          <p class="proj-desc">Visual SOC dashboards mapping global attack surfaces, auth anomalies, and MITRE ATT&amp;CK coverage. Parameterised KQL cross-referencing Defender XDR with MTTA/MTTR metrics.</p>
+          <div class="proj-tags"><span class="proj-tag">Sentinel</span><span class="proj-tag">KQL</span><span class="proj-tag">MITRE</span><span class="proj-tag">Defender XDR</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2026</div><span class="proj-award">Enterprise SIEM</span></div>
+      </div>
+
+      <div class="proj-row reveal"><div class="proj-num">03</div>
+        <div>
+          <div class="proj-title">High-Throughput API Ingestion &amp; Logstash</div>
+          <div class="proj-sub">Azure DCE · Linux Forwarders · ASIM</div>
+          <p class="proj-desc">Multi-terabyte log pipelines into Azure Log Analytics with grok filtering, ASIM normalisation, and DCR XPath transforms. Sub-3s latency, &gt;60% cost reduction.</p>
+          <div class="proj-tags"><span class="proj-tag">Azure DCE</span><span class="proj-tag">Logstash</span><span class="proj-tag">ASIM</span><span class="proj-tag">DCR</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2026</div><span class="proj-award">Sub-3s Latency</span></div>
+      </div>
+
+      <div class="proj-row reveal"><div class="proj-num">04</div>
+        <div>
+          <div class="proj-title">Security Copilot &amp; Agentic AI Triage</div>
+          <div class="proj-sub">Copilot Studio · Anthropic MCP · Forensic Promptbooks</div>
+          <p class="proj-desc">Autonomous forensic investigation framework — Security Copilot + Copilot Studio + Anthropic MCP collapsing analyst fatigue with dynamic KQL lookups and attack chain synthesis.</p>
+          <div class="proj-tags"><span class="proj-tag">Security Copilot</span><span class="proj-tag">MCP</span><span class="proj-tag">Claude API</span><span class="proj-tag">Agentic AI</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2026</div><span class="proj-award">Agentic AI</span></div>
+      </div>
+
+      <div class="proj-row reveal"><div class="proj-num">05</div>
+        <div>
+          <div class="proj-title">Azure Logic Apps (SOAR) Automated Playbooks</div>
+          <div class="proj-sub">Zero-Touch Containment · Identity Quarantine</div>
+          <p class="proj-desc">Playbooks triggered on high-severity Sentinel alerts — REST API webhooks push IPs to firewalls, Entra ID sessions revoked, Teams Adaptive Cards notify analysts — all under 60 seconds.</p>
+          <div class="proj-tags"><span class="proj-tag">Logic Apps</span><span class="proj-tag">SOAR</span><span class="proj-tag">Entra ID</span><span class="proj-tag">Teams</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2026</div><span class="proj-award">Sub-Min MTTR</span></div>
+      </div>
+
+      <div class="proj-row reveal"><div class="proj-num">06</div>
+        <div>
+          <div class="proj-title">Sentinel CCF &amp; Custom Analytic Rules</div>
+          <div class="proj-sub">Codeless Connector Framework · MITRE KQL Engineering</div>
+          <p class="proj-desc">Turnkey data connectors via CCF/CCP with bespoke Scheduled and NRT analytic rules. XPath + DCR filters eliminate &gt;60% billable noise before ingestion.</p>
+          <div class="proj-tags"><span class="proj-tag">CCF</span><span class="proj-tag">NRT Rules</span><span class="proj-tag">DCR</span><span class="proj-tag">KQL</span></div>
+        </div>
+        <div class="proj-meta"><div class="proj-year">2026</div><span class="proj-award">&gt;60% Saving</span></div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="page-section" id="credentials" aria-label="Credentials">
+      <div class="sec-eyebrow">Credentials</div>
+      <h2 class="sec-title">Certifications &amp; <em>Licenses.</em></h2>
+
+      <div class="cred-row reveal"><div><div class="cred-name">Frontier Transformation Engineer</div><div class="cred-org">Microsoft AI Frontiers · 248072e9-1319-42df-add0-3684a6ba1c24</div></div><div><span class="cred-date">Aug 2026</span><a href="https://www.credly.com/badges/248072e9-1319-42df-add0-3684a6ba1c24/linked_in_profile" target="_blank" class="cred-link">Credly ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Security Operations Analyst Associate (SC-200)</div><div class="cred-org">Microsoft · CD094410B84FFB5D</div></div><div><span class="cred-date">May 2026</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/CD094410B84FFB5D" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Agentic AI Business Solutions Architect</div><div class="cred-org">Microsoft · 3B82C5E9CBAA80CC</div></div><div><span class="cred-date">Jul 2026</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/3B82C5E9CBAA80CC" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Azure AI Apps and Agents Developer Associate</div><div class="cred-org">Microsoft · C0331647B47FB79F</div></div><div><span class="cred-date">Jul 2026</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/C0331647B47FB79F" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">GitHub Copilot (GH 300)</div><div class="cred-org">Microsoft · E8B9A47EF5D908E</div></div><div><span class="cred-date">Jul 2026</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/E8B9A47EF5D908E" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Introduction to Model Context Protocol (MCP)</div><div class="cred-org">Anthropic · sk976swhpc2z</div></div><div><span class="cred-date">May 2026</span><a href="https://verify.skilljar.com/c/sk976swhpc2z" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Building with the Claude API</div><div class="cred-org">Anthropic · s8mz9m5ds74h</div></div><div><span class="cred-date">May 2026</span><a href="https://verify.skilljar.com/c/s8mz9m5ds74h" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Azure Fundamentals (AZ-900)</div><div class="cred-org">Microsoft · 5DA501A873AF0C1</div></div><div><span class="cred-date">Oct 2025</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/5DA501A873AF0C1" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Security, Compliance &amp; Identity Fundamentals (SC-900)</div><div class="cred-org">Microsoft · 595208280845D4D1</div></div><div><span class="cred-date">Aug 2025</span><a href="https://learn.microsoft.com/api/credentials/share/en-us/JissBoban-9373/595208280845D4D1" target="_blank" class="cred-link">Verify ↗</a></div></div>
+      <div class="cred-row reveal"><div><div class="cred-name">Electronic Systems for Cancer Diagnosis (ELITE)</div><div class="cred-org">IISc Bangalore / NPTEL · Score 69%</div></div><div><span class="cred-date">2024</span><span class="cred-link" style="cursor:default;color:rgba(255,255,255,.25)">Elite</span></div></div>
+    </section>
+
+    <!-- HONORS -->
+    <section class="page-section" id="honors" aria-label="Honors">
+      <div class="sec-eyebrow">Recognition</div>
+      <h2 class="sec-title">Honors &amp; <em>Awards.</em></h2>
+      <div class="honors-grid">
+        <div class="honor-card reveal"><div class="honor-icon">🏆</div><div class="honor-name">PT Thomas MLA Excellence Award</div><p class="honor-desc">Outstanding academic achievements in CSE and Electronics. Presented by MLA Uma Thomas, Kerala State Legislature.</p><div class="honor-giver">MLA Uma Thomas · Kerala</div></div>
+        <div class="honor-card reveal"><div class="honor-icon">🚁</div><div class="honor-name">KTU State Selection — ENTE KERALAM</div><p class="honor-desc">Golden Eye – The Rescue Drone selected by APJ Abdul Kalam Technological University for Kerala's 4th Anniversary State Expo.</p><div class="honor-giver">KTU &amp; Kerala State Govt</div></div>
+        <div class="honor-card reveal"><div class="honor-icon">🎓</div><div class="honor-name">AISAT Principal's Club</div><p class="honor-desc">Academic excellence for maintaining CGPA above 8.0 (final: 8.65) across all four years of engineering.</p><div class="honor-giver">Albertian Inst. of Sci &amp; Tech</div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page-section" id="contact" aria-label="Contact">
+      <div class="contact-grid">
         <div class="reveal">
-          <div class="sec-label">Contact</div>
-          <h2 class="contact-hed">
-            Let's build<br>
-            <em>resilient defence.</em>
-          </h2>
-          <p class="contact-para">
-            Available for enterprise security engineering projects, Microsoft Sentinel deployments,
-            SOAR automation, and Agentic AI initiatives — globally.
-          </p>
-          <div class="contact-avail">
-            <span class="status-dot"></span>
-            Available for global projects
-          </div>
+          <div class="sec-eyebrow">Contact</div>
+          <h2 class="contact-hed">Let's build<br><em>resilient defence.</em></h2>
+          <p class="contact-para">Available for enterprise Sentinel deployments, SOAR automation, and Agentic AI projects globally.</p>
+          <div class="avail-badge"><span class="bar-dot"></span>Available for global projects</div>
         </div>
-
-        <div class="contact-rows reveal">
-          <a href="mailto:jissboban@gmail.com" class="contact-row" id="contact-email">
-            <span class="contact-row-label">Email</span>
-            <span class="contact-row-val">jissboban@gmail.com</span>
-            <span class="contact-row-arrow">↗</span>
-          </a>
-          <a href="tel:+918921637620" class="contact-row" id="contact-phone">
-            <span class="contact-row-label">Phone / WA</span>
-            <span class="contact-row-val">+91 8921637620</span>
-            <span class="contact-row-arrow">↗</span>
-          </a>
-          <a href="https://www.linkedin.com/in/jissboban07" target="_blank" rel="noopener noreferrer" class="contact-row" id="contact-linkedin">
-            <span class="contact-row-label">LinkedIn</span>
-            <span class="contact-row-val">linkedin.com/in/jissboban07</span>
-            <span class="contact-row-arrow">↗</span>
-          </a>
-          <div class="contact-row" id="contact-location" style="cursor:default;">
-            <span class="contact-row-label">Location</span>
-            <span class="contact-row-val">Coimbatore, TN &amp; Ernakulam, KL, India</span>
-            <span class="contact-row-arrow" style="opacity:0;">↗</span>
-          </div>
+        <div class="reveal">
+          <a href="mailto:jissboban@gmail.com" class="contact-item" id="c-email"><span class="contact-lbl">Email</span><span class="contact-val">jissboban@gmail.com</span><span class="contact-arr">↗</span></a>
+          <a href="tel:+918921637620" class="contact-item" id="c-phone"><span class="contact-lbl">Phone / WA</span><span class="contact-val">+91 8921637620</span><span class="contact-arr">↗</span></a>
+          <a href="https://www.linkedin.com/in/jissboban07" target="_blank" class="contact-item" id="c-li"><span class="contact-lbl">LinkedIn</span><span class="contact-val">linkedin.com/in/jissboban07</span><span class="contact-arr">↗</span></a>
+          <div class="contact-item" style="cursor:default" id="c-loc"><span class="contact-lbl">Location</span><span class="contact-val">Coimbatore, TN &amp; Ernakulam, KL, India</span><span class="contact-arr" style="opacity:0">↗</span></div>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
-  <footer class="site-footer">
+  <!-- FOOTER -->
+  <footer>
     <div class="footer-left">
-      <div class="footer-ms-logo" aria-hidden="true">
-        <span></span><span></span><span></span><span></span>
-      </div>
+      <div class="footer-ms" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <span class="footer-copy">© 2025–2026 Jiss Boban · Associate Security Engineer</span>
     </div>
-    <div class="footer-right">
-      <span class="footer-clock" id="footer-clock" aria-live="polite">IST —:—:—</span>
-    </div>
+    <span id="footer-clock"></span>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+  (function(){
+    'use strict';
+
+    /* ── Cursor ── */
+    const dot = document.getElementById('cur-dot');
+    const ring = document.getElementById('cur-ring');
+    let mx=-100,my=-100,rx=-100,ry=-100;
+    document.addEventListener('mousemove',e=>{
+      mx=e.clientX; my=e.clientY;
+      dot.style.left=mx+'px'; dot.style.top=my+'px';
+    });
+    (function lerp(){
+      rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(lerp);
+    })();
+    document.querySelectorAll('a,button,.honor-card,.stat-item').forEach(el=>{
+      el.addEventListener('mouseenter',()=>ring.classList.add('expand'));
+      el.addEventListener('mouseleave',()=>ring.classList.remove('expand'));
+    });
+
+    /* ── Live clock ── */
+    const clocks=[
+      document.getElementById('status-clock'),
+      document.getElementById('footer-clock')
+    ].filter(Boolean);
+    function tick(){
+      const t=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(new Date());
+      clocks.forEach(c=>c.textContent='IST '+t);
+    }
+    tick(); setInterval(tick,1000);
+
+    /* ── Scroll reveal ── */
+    const revEls=document.querySelectorAll('.reveal');
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const sibs=Array.from(e.target.parentElement.querySelectorAll('.reveal:not(.on)'));
+          sibs.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),i*65));
+          e.target.classList.add('on');
+          obs.unobserve(e.target);
+        }
+      });
+    },{rootMargin:'0px 0px -40px 0px',threshold:.05});
+    revEls.forEach(el=>obs.observe(el));
+
+    /* ── Active nav ── */
+    const sections=document.querySelectorAll('section[id],div[id]');
+    const navLinks=document.querySelectorAll('#topnav .nav-cell[href]');
+    const secObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+        }
+      });
+    },{rootMargin:'-20% 0px -70% 0px'});
+    sections.forEach(s=>secObs.observe(s));
+
+    /* ── Smooth scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        const t=document.querySelector(this.getAttribute('href'));
+        if(!t)return;
+        e.preventDefault();
+        window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-50,behavior:'smooth'});
+      });
+    });
+
+    /* ── Parallax hero bg ── */
+    const bg=document.getElementById('hero-bg');
+    window.addEventListener('scroll',()=>{
+      if(window.pageYOffset<window.innerHeight)
+        bg.style.transform=`scale(1) translateY(${window.pageYOffset*.3}px)`;
+    },{passive:true});
+
+  })();
+  </script>
 </body>
 </html>
